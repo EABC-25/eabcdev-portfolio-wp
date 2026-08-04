@@ -12,22 +12,21 @@ if (!defined('ABSPATH')) {
 </head>
 <body <?php body_class(); ?>>
 
-<header>
-    <h1>
-        <a href="<?php echo esc_url(home_url('/'));?>">
-            <?php echo apply_filters('eabcdev_portfolio_site_title', get_bloginfo('name')); ?>
-        </a>
-    </h1>
-    
+<div class="layout">
+    <header>
+        <h1>
+            <a href="<?php echo esc_url(home_url('/'));?>">
+                <?php echo apply_filters('eabcdev_portfolio_site_title', get_bloginfo('name')); ?>
+            </a>
+        </h1>
 
-    <p><?php bloginfo('description'); ?></p>
+        <?php
+            wp_nav_menu([
+                'theme_location' => 'primary',
+                'fallback_cb' => false,
+            ]);
+        ?>
+    </header>
 
-    <?php
-    wp_nav_menu([
-        'theme_location' => 'primary',
-        'fallback_cb' => false,
-    ]);
-    ?>
-</header>
 
-<main class="site-main">
+<main class="site-main center-y">

@@ -1,0 +1,46 @@
+:root {
+  --bg-gray: #666666;
+  --bg-test: green;
+  --text-white: #ffffff;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--text-white);
+  background-color: var(--bg-gray);
+  height: calc(100dvh - var(--wp-admin--admin-bar--height, 0px));
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+  height: 100%;
+  margin: auto;
+}
+
+header {
+  height: 80px;
+  background-color: var(--bg-test);
+}
+
+footer {
+  background-color: var(--bg-test);
+}
+
+main {
+  flex: 1;
+}
+
+.center-y {
+  display: flex;
+  align-items: center;
+}
+
+.center-x {
+  display: flex;
+  justify-content: center;
+}
