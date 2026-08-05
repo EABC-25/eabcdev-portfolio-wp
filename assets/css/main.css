@@ -16,20 +16,15 @@ body {
 
 .layout {
   display: flex;
-  flex-direction: column;
   max-width: 80%;
   height: 100%;
   margin: auto;
 }
 
 header {
-  height: 80px;
+  height: 100%;
   background-color: var(--bg-test);
 }
-
-/* footer {
-  background-color: var(--bg-test);
-} */
 
 main {
   flex: 1;

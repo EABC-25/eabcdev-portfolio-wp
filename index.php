@@ -3,9 +3,9 @@
 if (!defined('ABSPATH')) {
     exit;
 }
-
-get_header();
 ?>
+
+<?php get_header(); ?>
 
 <h2>Theme index.php fallback</h2>
 
