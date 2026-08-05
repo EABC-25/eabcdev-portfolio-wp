@@ -27,9 +27,9 @@ header {
   background-color: var(--bg-test);
 }
 
-footer {
+/* footer {
   background-color: var(--bg-test);
-}
+} */
 
 main {
   flex: 1;

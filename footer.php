@@ -1,10 +1,5 @@
 </main>
 
-    <footer>
-        <?php do_action('eabcdev_portfolio_before_footer'); ?>
-        <p>&copy; <?php echo esc_html(date('Y')); ?> <?php bloginfo('name'); ?></p>
-    </footer>
-
     <?php wp_footer(); ?>
 </div>
 </body>
