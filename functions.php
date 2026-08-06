@@ -4,6 +4,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+require_once get_template_directory() . '/lib/icons.php';
+
 /**
  * THEME SETUP
  */
@@ -87,3 +89,34 @@ function eabcdev_portfolio_enqueue_assets(): void
 }
 
 add_action('wp_enqueue_scripts', 'eabcdev_portfolio_enqueue_assets');
+
+/**
+ * Custom Hooks
+ */
+function eabcdev_portfolio_primary_menu_icons(
+    $item_output,
+    $item,
+    $depth,
+    $args
+) {
+    if ($args->theme_location !== 'primary') {
+        return $item_output;
+    }
+
+    $icon = sanitize_key($item->post_name);
+
+    $svg = eabcdev_portfolio_icon($icon);
+
+    return str_replace(
+        $item->title,
+        $svg,
+        $item_output
+    );
+}
+
+add_filter(
+    'walker_nav_menu_start_el',
+    'eabcdev_portfolio_primary_menu_icons',
+    10,
+    4
+);
