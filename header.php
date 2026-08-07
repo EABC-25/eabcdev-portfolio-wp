@@ -14,16 +14,11 @@ if (!defined('ABSPATH')) {
 
 <div class="layout">
     <header>
-        <h1>
-            <a href="<?php echo esc_url(home_url('/'));?>">
-                <?php echo apply_filters('eabcdev_portfolio_site_title', get_bloginfo('name')); ?>
-            </a>
-        </h1>
-
         <?php
             wp_nav_menu([
                 'theme_location' => 'primary',
                 'fallback_cb' => false,
+                'walker' => new EABCDEV_Portfolio_Primary_Menu_Walker()
             ]);
         ?>
     </header>

@@ -22,8 +22,12 @@ body {
 }
 
 header {
-  height: 100%;
+  height: 100dvh;
   background-color: var(--bg-test);
+}
+
+header li {
+  list-style: none;
 }
 
 main {
@@ -38,4 +42,11 @@ main {
 .center-x {
   display: flex;
   justify-content: center;
+}
+
+/* WordPress Block CSS */
+
+.menu-main-navigation-container {
+  height: 100%;
+  width: 100%;
 }
