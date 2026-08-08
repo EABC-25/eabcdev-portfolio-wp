@@ -12,6 +12,17 @@ body {
   color: var(--text-white);
   background-color: var(--bg-gray);
   height: calc(100dvh - var(--wp-admin--admin-bar--height, 0px));
+  overflow: hidden;
+  /* Hide scrollbar for Chrome, Safari, and newer Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for Firefox */
+  scrollbar-width: none;
+
+  /* Hide scrollbar for IE and legacy Edge */
+  -ms-overflow-style: none;
 }
 
 .layout {
@@ -22,7 +33,7 @@ body {
 }
 
 header {
-  height: 100dvh;
+  height: 100%;
   background-color: var(--bg-test);
 }
 
