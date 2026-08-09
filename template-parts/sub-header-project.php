@@ -1,4 +1,8 @@
 <?php
+  if (!defined('ABSPATH')) {
+    exit;
+  }
+
   $projects = get_posts([
     'post_type'=>'project',
     'posts_per_page'=> -1,
@@ -6,14 +10,27 @@
   ]);
 ?>
 
-<nav>
-  <h1>Projects</h1>
+<article class="window-tab">
+  <div class="window-header">
+    <div class="window-title">
+       <!-- TODO: sanitize h1 ?-->
+      <h1>Projects</h1>
+      <a href="<?php echo esc_url(home_url('/'));?>">x</a>
+    </div>
+  </div>
+  
 
-  <?php foreach ($projects as $project) : ?>
-    <a 
-      href="<?= get_permalink($project); ?>"
-    >
-      <?= esc_html($project->post_title); ?>
-    </a>
+  <section class="window-contents">
+    <ul class="projects-list">
+    <?php foreach ($projects as $project) : ?>
+      <li>
+        <a 
+          href="<?= get_permalink($project); ?>"
+        >
+          <?= esc_html($project->post_title); ?>
+        </a>
+      </li>
   <?php endforeach; ?>
-</nav>
+  </ul>
+  </section>
+</article>

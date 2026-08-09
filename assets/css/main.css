@@ -1,15 +1,48 @@
+/* --------------------------------------------------- */
+/* ------------------ ROOT STYLES -------------------- */
+/* --------------------------------------------------- */
+
 :root {
   --bg-gray: #666666;
   --bg-test: green;
+  --bg-main-header: #1c2226;
+  --text-main: #c5c5c5;
   --text-white: #ffffff;
+  --border-style: #666666 1px solid;
+  --global-margin: 5px;
 }
 
 html {
   box-sizing: border-box;
 }
 
+h1,
+h2,
+h3,
+p {
+  padding: 0;
+  margin: 0;
+  width: fit-content;
+  color: var(--text-main);
+}
+
+ul,
+li,
+a {
+  list-style: none;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  width: fit-content;
+  color: var(--text-main);
+}
+
+/* --------------------------------------------------- */
+/* ------------------ Mobile First ------------------- */
+/* --------------------------------------------------- */
+
 body {
-  color: var(--text-white);
+  color: var(--text-main);
   background-color: var(--bg-gray);
   height: calc(100dvh - var(--wp-admin--admin-bar--height, 0px));
   overflow: hidden;
@@ -25,23 +58,41 @@ body {
   -ms-overflow-style: none;
 }
 
+svg {
+  color: var(--text-main);
+  height: 20px;
+  width: 20px;
+}
+
 .layout {
   display: flex;
-  max-width: 80%;
+  flex-direction: column;
+  max-width: 100%;
   height: 100%;
   margin: auto;
 }
 
 header {
-  height: 100%;
-  background-color: var(--bg-test);
+  width: 100%;
+  display: flex;
+  background-color: var(--bg-main-header);
+  border-top: var(--border-style);
+  border-bottom: var(--border-style);
 }
 
 header li {
   list-style: none;
 }
 
+header li a {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
 main {
+  display: flex;
+  flex-direction: column;
   flex: 1;
 }
 
@@ -55,9 +106,75 @@ main {
   justify-content: center;
 }
 
-/* WordPress Block CSS */
+/* --------------------------------------------------- */
+/* ------------------ Primary Menu ------------------- */
+/* --------------------------------------------------- */
 
 .menu-main-navigation-container {
-  height: 100%;
-  width: 100%;
+  display: flex;
+  align-content: center;
+}
+
+.menu {
+  display: flex;
+  padding: 0;
+  margin: var(--global-margin);
+  gap: 8px;
+}
+
+.menu li {
+  padding: 5px;
+  border-radius: 9999px;
+}
+
+/* --------------------------------------------------- */
+/* --------------------- Window ---------------------- */
+/* --------------------------------------------------- */
+
+.window-tab {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: var(--bg-main-header);
+}
+
+.window-header {
+  display: flex;
+  margin-left: var(--global-margin);
+  margin-top: var(--global-margin);
+  gap: 2px;
+}
+
+.window-title {
+  display: flex;
+  background-color: var(--bg-gray);
+  width: fit-content;
+  border-top-right-radius: 6px;
+  padding: 5px 15px 5px 10px;
+}
+
+.window-title.full-margin {
+  margin-bottom: 2px;
+}
+
+.window-title.not-current {
+  padding-right: 5px;
+}
+
+.window-title h1 {
+  font-size: 12px;
+  padding-right: 10px;
+}
+
+.window-title a {
+  font-size: 12px;
+}
+
+.window-contents {
+  flex: 1;
+  margin: var(--global-margin);
+  margin-top: 0;
+  border-radius: 5px;
+  border-top-left-radius: 0;
+  background-color: var(--bg-gray);
 }

@@ -18,10 +18,11 @@ if (!defined('ABSPATH')) {
             wp_nav_menu([
                 'theme_location' => 'primary',
                 'fallback_cb' => false,
+                // 'container'=>false,
                 'walker' => new EABCDEV_Portfolio_Primary_Menu_Walker()
             ]);
         ?>
     </header>
 
 
-<main class="site-main center-y">
+<main class="site-main">

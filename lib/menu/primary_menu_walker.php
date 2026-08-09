@@ -17,7 +17,8 @@ class EABCDEV_Portfolio_Primary_Menu_Walker extends Walker_Nav_Menu {
 
     // array filter will remove empty classes[0]
     $classes = implode(' ', array_filter($item->classes));
-
+    
+    // I ctually want to reduce bloat and remove all these classes, but for now lets keep it
     $output .= sprintf(
       '<li class="%s">
         <a href="%s">
