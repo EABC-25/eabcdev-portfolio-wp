@@ -4,9 +4,11 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+require_once get_template_directory() . '/lib/project/project.php';
+require_once get_template_directory() . '/lib/project/project-routes.php';
 require_once get_template_directory() . '/lib/icons/icon.php';
 require_once get_template_directory() . '/lib/menu/primary_menu_walker.php';
-require_once get_template_directory() . '/lib/project/project.php';
+
 
 /**
  * THEME SETUP

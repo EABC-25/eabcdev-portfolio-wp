@@ -2,6 +2,7 @@
   if (!defined('ABSPATH')) {
     exit;
   }
+  $s = $_SERVER['REQUEST_URI'];
 ?>
 
 <?php get_header(); ?>
@@ -28,7 +29,8 @@
   </div>
 
   <section class="window-contents">
-    info
+    <?php echo esc_url($s); ?>
+    
   </section>
 </article>
 <?php endwhile; ?>
