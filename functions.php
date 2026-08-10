@@ -5,7 +5,8 @@ if (!defined('ABSPATH')) {
 }
 
 require_once get_template_directory() . '/lib/icons/icon.php';
-require_once get_template_directory() .'/lib/menu/primary_menu_walker.php';
+require_once get_template_directory() . '/lib/menu/primary_menu_walker.php';
+require_once get_template_directory() . '/lib/project/project.php';
 
 /**
  * THEME SETUP
@@ -36,32 +37,6 @@ function eabcdev_portfolio_setup(): void
 add_action('after_setup_theme', 'eabcdev_portfolio_setup');
 
 /**
- * REGISTER POST TYPES
- */
-function eabcdev_portfolio_register_post_types() {
-    register_post_type('project', [
-        'labels'=>[
-            'name'=>__('Projects', 'eabcdev-portfolio'),
-            'singular_name'=>__('Project', 'eabcdev-portfolio')
-        ],
-        'public'=>true,
-        'has_archive'=>true,
-        'rewrite'=>[
-            'slug'=>'projects',
-        ],
-        'menu_icon'=>'dashicons-portfolio',
-        'supports'=>[
-            'title',
-            'editor',
-            'thumbnail',
-            'excerpt',
-        ]
-    ]);
-}
-
-add_action('init', 'eabcdev_portfolio_register_post_types');
-
-/**
  * Enqueue Theme Assets
  */
 function eabcdev_portfolio_enqueue_assets(): void
@@ -90,7 +65,3 @@ function eabcdev_portfolio_enqueue_assets(): void
 }
 
 add_action('wp_enqueue_scripts', 'eabcdev_portfolio_enqueue_assets');
-
-/**
- * Custom Hooks
- */
