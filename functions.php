@@ -68,3 +68,17 @@ function eabcdev_portfolio_enqueue_assets(): void
 }
 
 add_action('wp_enqueue_scripts', 'eabcdev_portfolio_enqueue_assets');
+
+/**
+ * Flush rewrite rules after switch theme
+ */
+function eabcdev_portfolio_activate() {
+    eabcdev_portfolio_project_rewrite_rules();
+
+    flush_rewrite_rules();
+}
+
+add_action(
+    'after_switch_theme',
+    'eabcdev_portfolio_activate'
+);

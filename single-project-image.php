@@ -3,31 +3,16 @@
 if (!defined('ABSPATH')) {
     exit;
 }
-?>
 
-<?php get_header(); 
+$project_name_slug = get_query_var('name');
+$project_image_slug = get_query_var('project_image');
 
-$project_image = get_query_var('project_image');
-
-$images_json = get_post_meta(
-    get_the_ID(),
-    'project_images',
-    true
+$image = eabcdev_portfolio_get_project_image(
+  get_the_ID(),
+  $project_image_slug
 );
 
-$images = $images_json ? json_decode($images_json, true) : [];
-
-$requested_image = null;
-
-foreach($images as $image) {
-    if(
-        isset($image['slug']) &&
-        $image['slug'] === $project_image
-    ) {
-        $requested_image = $image;
-        break;
-    }
-}
+get_header(); 
 ?>
 
 <article class="window-tab">
@@ -45,20 +30,18 @@ foreach($images as $image) {
     </div>
     <div class="window-title ">
        <!-- TODO: sanitize h1 ?-->
-      <h1><?php echo esc_html($project_image) ?></h1>
-      <a href="<?php echo esc_url('/projects');?>">x</a>
+      <h1><?php echo esc_html($project_image_slug) ?></h1>
+      <!-- FIX: BUILD QUERY BACK TO PROJECT_NAME -->
+      <a href="<?php echo esc_url($project_name_slug);?>">x</a>
     </div>
   </div>
 
   <section class="window-contents">
-    <?php if ($requested_image) : ?>
+    <?php if ($image) : ?>
         <?php echo wp_get_attachment_image(
-            $requested_image['image_id'], 'large'
+            $image['image_id'], 'large'
         );?>
-    <?php else : ?>
-        <p>Image not found.</p>
     <?php endif; ?>
-    
   </section>
 </article>
 

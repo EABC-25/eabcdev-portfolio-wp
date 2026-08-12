@@ -28,3 +28,87 @@ function eabcdev_portfolio_register_post_types() {
 }
 
 add_action('init', 'eabcdev_portfolio_register_post_types');
+
+/**
+ * project_image getter function
+ */
+function eabcdev_portfolio_get_project_images($project_id) {
+    if(get_post_type($project_id) !== 'project') {
+        return null;
+    }
+    $images_json = get_post_meta(
+        $project_id,
+        'project_images',
+        true
+    );
+
+    if(!$images_json) {
+        return null;
+    }
+
+    $images = json_decode(
+        $images_json,
+        true
+    );
+
+    if(!is_array($images) || !$images) {
+        return null;
+    }
+
+    return $images;
+}
+function eabcdev_portfolio_get_project_image($project_id, $image_slug) {
+    if (get_post_type($project_id) !== 'project') {
+        return null;
+    }
+    $images_json = get_post_meta(
+        $project_id,
+        'project_images',
+        true
+    );
+
+    if(!$images_json) {
+        return null;
+    }
+
+    $images = json_decode(
+        $images_json,
+        true
+    );
+
+    if(!is_array($images)) {
+        return null;
+    }
+
+    $image_slug = sanitize_title($image_slug);
+
+    foreach ($images as $image) {
+        if (
+            isset($image['slug']) &&
+            $image['slug'] === $image_slug
+        ) {
+            return $image;
+        }
+    }
+
+    return null;
+}
+
+function eabcdev_portfolio_get_project_image_url($project_id, $image_slug) {
+    $project = get_post($project_id);
+
+    if(!$project || $project->post_type !== 'project') {
+        return '';
+    }
+
+    $image = eabcdev_portfolio_get_project_image($project_id, $image_slug);
+
+    if (!$image) {
+        return '';
+    }
+
+    $url = trailingslashit(get_permalink($project_id)) . $image['slug'];
+
+    // use site's configured permalink structure rather than hardcoding '/' at the end
+    return user_trailingslashit($url);
+}

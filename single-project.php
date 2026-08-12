@@ -2,7 +2,10 @@
   if (!defined('ABSPATH')) {
     exit;
   }
-  $s = $_SERVER['REQUEST_URI'];
+
+  $project_name = get_query_var('name');
+  $project_id = get_the_ID();
+  $images = eabcdev_portfolio_get_project_images($project_id);
 ?>
 
 <?php get_header(); ?>
@@ -29,8 +32,22 @@
   </div>
 
   <section class="window-contents">
-    <?php echo esc_url($s); ?>
-    
+    <?php echo sanitize_title($project_name); ?>
+    <?php if ($images) : ?>
+      <h1>Project Images:</h1>
+      <?php foreach ($images as $image) : ?>
+        <?php 
+          $image_url = eabcdev_portfolio_get_project_image_url($project_id, $image['slug']);  
+        ?>
+        <a href="<?php echo esc_url($image_url); ?>">
+          <?php 
+            echo wp_get_attachment_image($image['image_id'], 'medium')
+          ?>
+        </a>
+      <?php endforeach; ?>
+    <?php else :?>
+      <p>This project does not have images.</p>
+    <?php endif; ?>
   </section>
 </article>
 <?php endwhile; ?>
