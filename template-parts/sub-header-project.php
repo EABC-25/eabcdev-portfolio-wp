@@ -9,8 +9,6 @@
     'orderby'=>'menu_order'
   ]);
 ?>
-
-<article class="window-tab">
   <div class="window-header">
     <div class="window-title">
        <!-- TODO: sanitize h1 ?-->
@@ -19,7 +17,6 @@
     </div>
   </div>
   
-
   <section class="window-contents">
     <ul class="projects-list">
     <?php foreach ($projects as $project) : ?>
@@ -30,7 +27,8 @@
           <?= esc_html($project->post_title); ?>
         </a>
       </li>
-  <?php endforeach; ?>
-  </ul>
+    <?php endforeach; ?>
+    </ul>
   </section>
-</article>
+  
+

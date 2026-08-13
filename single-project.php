@@ -15,8 +15,8 @@
     while (have_posts()) :
       the_post();
 ?>
-
-<article class="window-tab">
+<article class="window">
+  <section class="window-tab">
   <div class="window-header">
     <div class="window-title full-margin not-current">
        <!-- TODO: sanitize h1 ?-->
@@ -49,6 +49,7 @@
       <p>This project does not have images.</p>
     <?php endif; ?>
   </section>
+</section>
 </article>
 <?php endwhile; ?>
 <?php endif; ?>

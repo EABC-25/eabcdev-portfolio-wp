@@ -5,7 +5,7 @@
 :root {
   --bg-gray: #666666;
   --bg-test: green;
-  --bg-main-header: #1c2226;
+  --bg-main: #1c2226;
   --text-main: #c5c5c5;
   --text-white: #ffffff;
   --border-style: #666666 1px solid;
@@ -43,7 +43,7 @@ a {
 
 body {
   color: var(--text-main);
-  background-color: var(--bg-gray);
+  background-color: var(--bg-main);
   height: calc(100dvh - var(--wp-admin--admin-bar--height, 0px));
   overflow: hidden;
   /* Hide scrollbar for Chrome, Safari, and newer Opera */
@@ -75,7 +75,6 @@ svg {
 header {
   width: 100%;
   display: flex;
-  background-color: var(--bg-main-header);
   border-top: var(--border-style);
   border-bottom: var(--border-style);
 }
@@ -131,26 +130,54 @@ main {
 /* --------------------- Window ---------------------- */
 /* --------------------------------------------------- */
 
+.window {
+  display: flex;
+  flex: 1;
+  position: relative;
+  margin: var(--global-margin);
+}
+
+.window-absolute-container {
+  display: flex;
+  width: 30px;
+  border-top-right-radius: 6px;
+}
+
 .window-tab {
   display: flex;
   flex-direction: column;
   flex: 1;
-  background-color: var(--bg-main-header);
+}
+
+.window-tab.absolute-furled {
+  position: absolute;
+  flex: 1;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  /* right: 0px; */
+  /* z-index: 100; */
+  width: 0px;
+  overflow: hidden;
 }
 
 .window-header {
   display: flex;
-  margin-left: var(--global-margin);
-  margin-top: var(--global-margin);
   gap: 2px;
 }
 
 .window-title {
   display: flex;
   background-color: var(--bg-gray);
-  width: fit-content;
+  width: 60px;
+  max-width: 60px;
   border-top-right-radius: 6px;
   padding: 5px 15px 5px 10px;
+}
+
+.window-title.full-width {
+  width: 80px;
+  max-width: 80px;
 }
 
 .window-title.full-margin {
@@ -172,9 +199,14 @@ main {
 
 .window-contents {
   flex: 1;
-  margin: var(--global-margin);
   margin-top: 0;
   border-radius: 5px;
   border-top-left-radius: 0;
   background-color: var(--bg-gray);
+}
+
+.window-contents img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }

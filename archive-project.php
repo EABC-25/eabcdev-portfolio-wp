@@ -6,7 +6,10 @@ if (!defined('ABSPATH')) {
 ?>
 
 <?php get_header(); ?>
-
-<?php get_template_part('template-parts/sub-header', 'project'); ?>
+<article class="window">
+    <section class="window-tab">
+        <?php get_template_part('template-parts/sub-header', 'project'); ?>
+    </section>
+</article>
 
 <?php get_footer(); ?>

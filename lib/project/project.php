@@ -112,3 +112,16 @@ function eabcdev_portfolio_get_project_image_url($project_id, $image_slug) {
     // use site's configured permalink structure rather than hardcoding '/' at the end
     return user_trailingslashit($url);
 }
+
+function eabcdev_portfolio_get_project_url($project_id) {
+    $project = get_post($project_id);
+
+    if(!$project || $project->post_type !== 'project') {
+        return '';
+    }
+
+    $url = trailingslashit(get_permalink($project_id));
+
+    // use site's configured permalink structure rather than hardcoding '/' at the end
+    return user_trailingslashit($url);
+}
