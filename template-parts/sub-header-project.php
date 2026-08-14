@@ -11,9 +11,7 @@
 ?>
   <div class="window-header">
     <div class="window-title">
-       <!-- TODO: sanitize h1 ?-->
       <h1>Projects</h1>
-      <a href="<?php echo esc_url(home_url('/'));?>">x</a>
     </div>
   </div>
   

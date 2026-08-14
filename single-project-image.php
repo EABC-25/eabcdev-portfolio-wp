@@ -18,11 +18,10 @@ get_header();
 ?>
 <article class="window">
   <div class="window-absolute-container">
-    <section class="window-tab absolute-furled">
+    <section class="window-tab absolute furled">
       <?php get_template_part('template-parts/sub-header', 'project'); ?>
     </section>
-    <!-- when this btn is clicked, furl the absolute tab, then add 80px? to window-absolute-container -->
-    <button>></button>
+    <button id="window-absolute-button"></button>
   </div>
 
   <section class="window-tab">

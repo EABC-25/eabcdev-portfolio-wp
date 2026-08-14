@@ -9,7 +9,8 @@
   --text-main: #c5c5c5;
   --text-white: #ffffff;
   --border-style: #666666 1px solid;
-  --global-margin: 5px;
+  --global-max-margin: 5px;
+  --global-min-margin: 2px;
 }
 
 html {
@@ -35,6 +36,11 @@ a {
   margin: 0;
   width: fit-content;
   color: var(--text-main);
+}
+
+button {
+  all: unset;
+  cursor: pointer;
 }
 
 /* --------------------------------------------------- */
@@ -117,7 +123,7 @@ main {
 .menu {
   display: flex;
   padding: 0;
-  margin: var(--global-margin);
+  margin: var(--global-max-margin);
   gap: 8px;
 }
 
@@ -133,32 +139,56 @@ main {
 .window {
   display: flex;
   flex: 1;
+  gap: var(--global-min-margin);
   position: relative;
-  margin: var(--global-margin);
+  margin: var(--global-max-margin);
+  transition: all 0.5s ease-in-out;
 }
 
 .window-absolute-container {
   display: flex;
-  width: 30px;
+  width: 20px;
+  transition: inherit;
+}
+
+.window-absolute-container.active {
+  width: 85px;
+}
+
+.window-absolute-container button {
+  width: 100%;
+  background-color: var(--bg-test);
   border-top-right-radius: 6px;
+  z-index: 100;
 }
 
 .window-tab {
   display: flex;
   flex-direction: column;
   flex: 1;
+  transition: inherit;
 }
 
-.window-tab.absolute-furled {
+.window-tab.absolute {
   position: absolute;
   flex: 1;
-  top: 0px;
+  top: 2px;
   bottom: 0px;
   left: 0px;
-  /* right: 0px; */
-  /* z-index: 100; */
-  width: 0px;
+  z-index: 10;
   overflow: hidden;
+  transition: width 0.8s ease-in-out;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.window-tab.absolute.furled {
+  opacity: 0;
+  width: 0px;
+}
+
+.window-tab.absolute.unfurled {
+  opacity: 1;
+  width: 100%;
 }
 
 .window-header {
