@@ -107,10 +107,9 @@ function eabcdev_portfolio_get_project_image_url($project_id, $image_slug) {
         return '';
     }
 
-    $url = trailingslashit(get_permalink($project_id)) . $image['slug'];
+    $url = trailingslashit(get_permalink($project_id)) . "images/";
 
-    // use site's configured permalink structure rather than hardcoding '/' at the end
-    return user_trailingslashit($url);
+    return add_query_arg('image', $image['slug'], $url);
 }
 
 function eabcdev_portfolio_get_project_url($project_id) {

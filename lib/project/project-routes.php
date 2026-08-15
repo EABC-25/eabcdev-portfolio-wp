@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
 }
 
 function eabcdev_portfolio_project_query_vars($vars) {
-  $vars[] = 'project_image';
+  $vars[] = 'project_images';
 
   return $vars;
 }
@@ -25,8 +25,8 @@ function eabcdev_portfolio_project_rewrite_rules() {
   $slug = $post_type->rewrite['slug'];
 
   add_rewrite_rule(
-    '^' . $slug . '/([^/]+)/([^/]+)/?$',
-    'index.php?post_type=project&name=$matches[1]&project_image=$matches[2]',
+    '^' . $slug . '/([^/]+)/images/?$',
+    'index.php?post_type=project&name=$matches[1]&project_images=true',
     'top'
   );
 }
@@ -34,9 +34,9 @@ function eabcdev_portfolio_project_rewrite_rules() {
 add_action('init', 'eabcdev_portfolio_project_rewrite_rules');
 
 function eabcdev_portfolio_project_image_template($template) {
-  $image_slug = get_query_var('project_image');
+  $project_images = get_query_var('project_images');
 
-  if(!$image_slug) {
+  if(!$project_images) {
     return $template;
   }
 
@@ -51,6 +51,22 @@ function eabcdev_portfolio_project_image_template($template) {
     status_header(404);
     return get_404_template();
   }
+
+  $image_slug = isset($_GET['image']) ? sanitize_title(wp_unslash($_GET['image'])) : "";
+
+  // /images/ AS !isset($_GET['image]) is ""
+  // /images/?image= also gives ""
+  // therefore "" should then immediately route to single-project-image.php wherein it should display the very first image in the gallery as default
+  if ($image_slug === "") {
+    $image_template = locate_template('single-project-image.php');
+    if ($image_template) {
+      return $image_template;
+    }
+
+    return $template;
+  }
+
+  
 
   // this will check for $image_slug in $project_id, so if one doesn't match the other -> $image=null -> route to 404 page
   $image = eabcdev_portfolio_get_project_image(
