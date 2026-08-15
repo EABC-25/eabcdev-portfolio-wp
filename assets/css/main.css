@@ -153,8 +153,12 @@ main {
   display: flex;
   flex-direction: column;
   flex: 1;
-  max-width: 150px;
-  border: 1px solid var(--bg-gray);
+  /* max-width: 150px; */
+  /* border: 1px solid var(--bg-gray); */
+}
+
+.window-tab.colored {
+  background-color: var(--bg-gray);
 }
 
 .window-tab-header {
@@ -166,27 +170,41 @@ main {
   overflow: hidden;
   user-select: none;
   cursor: pointer;
+  background-color: var(--bg-gray);
+}
+
+.tab-margin {
+  height: 2px;
+  width: 100%;
+  background-color: var(--bg-main);
 }
 
 .window-content {
   display: flex;
+  flex-direction: column;
   height: 100%;
   position: absolute;
   right: 0px;
   left: 0px;
-  top: 30px;
+  top: calc(30px + var(--global-min-margin));
   bottom: 0px;
+  background-color: var(--bg-gray);
 }
 
-.window-content#first-column {
-  background-color: red;
+/* I ordered the z-index incase domcontentload gives the first rendered columns z-index precedence? usually since third column is the last rendered absolute element, it will always be on top of all its siblings - but in case it fails I have this hardcoded here */
+
+.window-tab.first-column {
+  z-index: 1;
 }
 
-.window-content#second-column {
-  background-color: blue;
+.window-tab.second-column {
   z-index: 2;
 }
 
-.window-content#third-column {
-  background-color: green;
+.window-tab.third-column {
+  z-index: 3;
 }
+
+/* .window-tab.highest-z {
+  z-index: 4;
+} */

@@ -21,19 +21,19 @@ get_header();
     <div class="window-tab-header">
       <h1>project</h1>
     </div>
-    <section class="window-content" id="first-column">
+    <section class="window-content first-column">
       project content
     </section>
   </section>
   <section class="window-tab">
     <div class="window-tab-header"><h1>project-name</h1></div>
-    <section class="window-content" id="second-column">
+    <section class="window-content second-column">
       project name content
     </section>
   </section>
-  <section class="window-tab">
+  <section class="window-tab colored">
     <div class="window-tab-header"><h1>project-images</h1></div>
-    <section class="window-content" id="third-column">
+    <section class="window-content third-column">
       project images content
     </section>
   </section>
