@@ -1,23 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
-  let active = false;
-  const windowAbsBtn = document.querySelector("#window-absolute-button");
-  const windowAbsContainer = document.querySelector(
-    ".window-absolute-container",
-  );
+  const windowEl = document.querySelector(".window");
+  const windowElChildren = windowEl.children;
 
-  windowAbsBtn.addEventListener("click", () => {
-    if (windowAbsContainer) {
-      if (!active && !windowAbsContainer.classList.contains("active")) {
-        active = true;
-        windowAbsContainer.classList.add("active");
-        windowAbsContainer.firstElementChild.classList.remove("furled");
-        windowAbsContainer.firstElementChild.classList.add("unfurled");
-      } else {
-        active = false;
-        windowAbsContainer.classList.remove("active");
-        windowAbsContainer.firstElementChild.classList.remove("unfurled");
-        windowAbsContainer.firstElementChild.classList.add("furled");
+  windowEl.addEventListener("click", el => {
+    if (
+      el.target.classList.contains("window-tab-header") ||
+      el.target.parentElement.classList.contains("window-tab-header")
+    ) {
+      for (child of windowElChildren) {
+        child.querySelector(".window-content").style.zIndex = 0;
       }
+
+      el.target
+        .closest("section")
+        .querySelector(".window-content").style.zIndex = 1;
     }
   });
 });

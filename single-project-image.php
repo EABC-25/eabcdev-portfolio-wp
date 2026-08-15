@@ -16,40 +16,27 @@ $image = eabcdev_portfolio_get_project_image(
 
 get_header(); 
 ?>
-<article class="window">
-  <div class="window-absolute-container">
-    <section class="window-tab absolute furled">
-      <?php get_template_part('template-parts/sub-header', 'project'); ?>
-    </section>
-    <button id="window-absolute-button"></button>
-  </div>
-
+<section class="window">
   <section class="window-tab">
-  <div class="window-header">
-    <!-- <div class="window-title full-margin not-current">
-      <a href="<?php echo esc_url('/projects');?>">
-        <h1>Projects</h1>
-      </a>
-    </div> -->
-    <div class="window-title full-margin not-current">
-      <a href="<?php echo $project_url; ?>"><h1>
-        <?php echo eabcdev_portfolio_substr_trailing_dots(esc_html(get_the_title()), 0, 8); ?>
-      </h1></a>
+    <div class="window-tab-header">
+      <h1>project</h1>
     </div>
-    <div class="window-title full-width">
-      <h1><?php echo eabcdev_portfolio_substr_trailing_dots(esc_html($project_image_slug), 0, 8); ?></h1>
-      <a href="<?php echo $project_url; ?>">x</a>
-    </div>
-  </div>
-
-  <section class="window-contents">
-    <?php if ($image) : ?>
-        <?php echo wp_get_attachment_image(
-            $image['image_id'], 'large', false, array( 'class' => 'fit' )
-        );?>
-    <?php endif; ?>
+    <section class="window-content" id="first-column">
+      project content
+    </section>
   </section>
+  <section class="window-tab">
+    <div class="window-tab-header"><h1>project-name</h1></div>
+    <section class="window-content" id="second-column">
+      project name content
+    </section>
   </section>
-</article>
+  <section class="window-tab">
+    <div class="window-tab-header"><h1>project-images</h1></div>
+    <section class="window-content" id="third-column">
+      project images content
+    </section>
+  </section>
+</section>
 
 <?php get_footer();
