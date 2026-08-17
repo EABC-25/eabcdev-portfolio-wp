@@ -6,11 +6,13 @@
   --bg-gray: #666666;
   --bg-test: green;
   --bg-main: #1c2226;
+  --bg-black: #121212;
   --text-main: #c5c5c5;
   --text-white: #ffffff;
   --border-style: #666666 1px solid;
   --global-max-margin: 5px;
   --global-min-margin: 2px;
+  --scroll-bar-color: #888;
 }
 
 html {
@@ -182,13 +184,14 @@ main {
 .window-content {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 1;
   position: absolute;
   right: 0px;
   left: 0px;
   top: calc(30px + var(--global-min-margin));
   bottom: 0px;
   background-color: var(--bg-gray);
+  padding: var(--global-min-margin);
 }
 
 /* I ordered the z-index incase domcontentload gives the first rendered columns z-index precedence? usually since third column is the last rendered absolute element, it will always be on top of all its siblings - but in case it fails I have this hardcoded here */
@@ -210,45 +213,56 @@ main {
 } */
 
 /* Gallery Slider */
-
 .gallery {
-  position: relative;
   height: 100%;
   display: flex;
+  flex-direction: column;
   flex: 1;
-  overflow: auto;
+}
+
+.featured {
+  height: 80%;
+  background-color: var(--bg-black);
+}
+
+.slider-container {
+  height: 20%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--bg-black);
 }
 
 .slider {
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
   display: flex;
-  flex: 1;
+  overflow: auto;
   height: 100%;
-  transform: translateX(calc((100vw - var(--global-max-margin)) * -1));
+  width: auto;
+  max-width: 80%;
+}
+
+/* Target the scrollbar container (track) */
+.slider::-webkit-scrollbar-track {
+  background: transparent; /* Removes background color */
+  box-shadow: none; /* Removes default inset shadows */
+  border: none; /* Removes any default borders */
+}
+
+/* Ensure the draggable thumb remains visible */
+.slider::-webkit-scrollbar-thumb {
+  background-color: var(
+    --scroll-bar-color
+  ); /* Set your preferred scrollbar handle color */
+  border-radius: 4px; /* Rounds the corners of the handle */
+}
+
+/* Optional: Define the overall scrollbar width */
+.slider::-webkit-scrollbar {
+  width: 8px; /* Vertical scrollbar width */
+  height: 8px; /* Horizontal scrollbar height */
 }
 
 .card {
-  background-color: var(--bg-test);
-  height: 100%;
-  /* not scalable on UI element that does not cover almost 100vw */
-  width: calc(100vw - var(--global-max-margin));
-}
-
-.switch {
-  position: absolute;
-  display: flex;
-  bottom: 0px;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 1;
-}
-
-.switch button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100px;
-  width: 100px;
+  flex-shrink: 0;
+  width: 150px;
 }

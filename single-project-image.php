@@ -35,18 +35,25 @@ get_header();
     <div class="window-tab-header"><h1>project-images</h1></div>
     <section class="window-content third-column">
       <div class="gallery">
-        <div class="slider">
-          <div class="card">card 1</div>
-          <div class="card">card 2</div>
-          <div class="card">card 3</div>
-          <div class="card">card 4</div>
-          <div class="card">card 5</div>
-          <div class="card">card 6</div>
+        <div class="featured">featured card</div>
+        <div class="slider-container">
+          <div class="slider">
+            <div class="card">card 1</div>
+            <div class="card">card 2</div>
+            <div class="card">card 3</div>
+            <div class="card">card 4</div>
+            <div class="card">card 5</div>
+            <div class="card">card 6</div>
+            <div class="card">card 7</div>
+            <div class="card">card 8</div>
+            <div class="card">card 9</div>
+            <div class="card">card 10</div>
+            <div class="card">card 11</div>
+            <div class="card">card 12</div>
+            <div class="card">card 13</div>
+          </div>
         </div>
-        <div class="switch">
-          <button><</button>
-          <button>></button>
-        </div>
+        
       </div>
     </section>
   </section>
