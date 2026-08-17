@@ -208,3 +208,47 @@ main {
 /* .window-tab.highest-z {
   z-index: 4;
 } */
+
+/* Gallery Slider */
+
+.gallery {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex: 1;
+  overflow: auto;
+}
+
+.slider {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  display: flex;
+  flex: 1;
+  height: 100%;
+  transform: translateX(calc((100vw - var(--global-max-margin)) * -1));
+}
+
+.card {
+  background-color: var(--bg-test);
+  height: 100%;
+  /* not scalable on UI element that does not cover almost 100vw */
+  width: calc(100vw - var(--global-max-margin));
+}
+
+.switch {
+  position: absolute;
+  display: flex;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 1;
+}
+
+.switch button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width: 100px;
+}

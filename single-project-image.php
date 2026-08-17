@@ -34,10 +34,20 @@ get_header();
   <section class="window-tab colored">
     <div class="window-tab-header"><h1>project-images</h1></div>
     <section class="window-content third-column">
-      project images content
-      <?php var_dump($image_slug);
-        var_dump($image);
-      ?>
+      <div class="gallery">
+        <div class="slider">
+          <div class="card">card 1</div>
+          <div class="card">card 2</div>
+          <div class="card">card 3</div>
+          <div class="card">card 4</div>
+          <div class="card">card 5</div>
+          <div class="card">card 6</div>
+        </div>
+        <div class="switch">
+          <button><</button>
+          <button>></button>
+        </div>
+      </div>
     </section>
   </section>
 </section>
