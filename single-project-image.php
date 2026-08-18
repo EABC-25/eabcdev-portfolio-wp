@@ -10,9 +10,9 @@ $project_url = eabcdev_portfolio_get_project_url($project_id);
 
 $image_slug = isset($_GET['image']) 
   ? sanitize_title(wp_unslash($_GET['image'])) : '';
-$project_image_slug = get_query_var('project_image');
 $image = $image_slug 
   ? eabcdev_portfolio_get_project_image($project_id, $image_slug) : null;
+$images = eabcdev_portfolio_get_project_images($project_id);
 
 get_header(); 
 ?>
@@ -35,25 +35,29 @@ get_header();
     <div class="window-tab-header"><h1>project-images</h1></div>
     <section class="window-content third-column">
       <div class="gallery">
-        <div class="featured">featured card</div>
+        <div class="featured">
+          <?php echo wp_get_attachment_image($image['image_id'], 'large') ?>
+        </div>
         <div class="slider-container">
           <div class="slider">
-            <div class="card">card 1</div>
-            <div class="card">card 2</div>
-            <div class="card">card 3</div>
-            <div class="card">card 4</div>
-            <div class="card">card 5</div>
-            <div class="card">card 6</div>
-            <div class="card">card 7</div>
-            <div class="card">card 8</div>
-            <div class="card">card 9</div>
-            <div class="card">card 10</div>
-            <div class="card">card 11</div>
-            <div class="card">card 12</div>
-            <div class="card">card 13</div>
+            <?php if ($images) : ?>
+              <?php foreach ($images as $image_single) : ?>
+                <?php 
+                  $thumbnail = wp_get_attachment_image($image_single['image_id'], 'small');
+
+                  $large_image = wp_get_attachment_image_url($image_single['image_id'], 'large');
+                ?>
+                <div 
+                  class="card"
+                  data-image-slug="<?php echo esc_attr($image_single['slug']); ?>"
+                  data-large-image="<?php echo esc_url($large_image); ?>"            
+                >
+                  <?php echo $thumbnail; ?>
+                </div>
+              <?php endforeach; ?>
+            <?php endif; ?>
           </div>
         </div>
-        
       </div>
     </section>
   </section>

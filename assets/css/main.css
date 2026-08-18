@@ -235,7 +235,8 @@ main {
 
 .slider {
   display: flex;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
   height: 100%;
   width: auto;
   max-width: 80%;
@@ -265,4 +266,11 @@ main {
 .card {
   flex-shrink: 0;
   width: 150px;
+  height: 100%;
+}
+
+.gallery img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }

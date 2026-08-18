@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   const windowEl = document.querySelector(".window");
+
+  if (!windowEl) {
+    return;
+  }
+
   const windowElChildren = windowEl.children;
 
   windowEl.addEventListener("click", el => {
@@ -22,5 +27,21 @@ document.addEventListener("DOMContentLoaded", () => {
         el.target.parentElement.classList.add("colored");
       }
     }
+  });
+
+  const cards = windowEl.querySelectorAll(".card");
+  let featured = windowEl.querySelector(".featured img");
+
+  if (!cards) {
+    return;
+  }
+
+  cards.forEach(card => {
+    card.addEventListener("click", () => {
+      featured.removeAttribute("srcset");
+      featured.removeAttribute("sizes");
+      featured.src = card.dataset.largeImage;
+      console.log(card.dataset.imageSlug);
+    });
   });
 });
