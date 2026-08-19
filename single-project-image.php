@@ -48,7 +48,7 @@ get_header();
                   $large_image = wp_get_attachment_image_url($image_single['image_id'], 'large');
                 ?>
                 <div 
-                  class="card"
+                  class="<?php echo $image_slug === $image_single['slug'] ? 'card full-opacity': 'card' ?>"
                   data-image-slug="<?php echo esc_attr($image_single['slug']); ?>"
                   data-large-image="<?php echo esc_url($large_image); ?>"            
                 >

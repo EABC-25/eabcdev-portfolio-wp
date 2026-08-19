@@ -240,6 +240,7 @@ main {
   height: 100%;
   width: auto;
   max-width: 80%;
+  gap: var(--global-max-margin);
 }
 
 /* Target the scrollbar container (track) */
@@ -265,8 +266,17 @@ main {
 
 .card {
   flex-shrink: 0;
-  width: 150px;
+  width: auto;
   height: 100%;
+  opacity: 0.5;
+}
+
+.card:hover {
+  opacity: 1;
+}
+
+.card.full-opacity {
+  opacity: 1;
 }
 
 .gallery img {
