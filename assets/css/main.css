@@ -12,7 +12,12 @@
   --border-style: #666666 1px solid;
   --global-max-margin: 5px;
   --global-min-margin: 2px;
+  --global-min-border-radius: 5px;
+  --global-max-border-radius: 10px;
   --scroll-bar-color: #888;
+  --font-size-small: 12px;
+  --font-size-medium: 14px;
+  --font-size-large: 16px;
 }
 
 html {
@@ -27,7 +32,7 @@ p {
   display: flex;
   padding: 0;
   margin: 0;
-  font-size: 1em;
+  font-size: var(--font-size-small);
   color: var(--text-main);
 }
 
@@ -40,7 +45,7 @@ a {
   text-decoration: none;
   padding: 0;
   margin: 0;
-  font-size: 1em;
+  font-size: var(--font-size-small);
   color: var(--text-main);
 }
 
@@ -148,15 +153,14 @@ main {
   gap: var(--global-min-margin);
   position: relative;
   margin: var(--global-max-margin);
-  transition: all 0.5s ease-in-out;
 }
 
 .window-tab {
   display: flex;
   flex-direction: column;
   flex: 1;
-  /* max-width: 150px; */
-  /* border: 1px solid var(--bg-gray); */
+  max-width: 150px;
+  border-top-right-radius: var(--global-min-border-radius);
 }
 
 .window-tab.colored {
@@ -173,6 +177,27 @@ main {
   user-select: none;
   cursor: pointer;
   background-color: var(--bg-gray);
+  border-top-right-radius: var(--global-min-border-radius);
+}
+
+.window-tab-header h1 {
+  overflow: hidden;
+  /* display: block; */
+  width: 90%;
+
+  /* The Fading Effect (Linear Gradient Mask) */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0) 100%
+  );
 }
 
 .tab-margin {
@@ -196,23 +221,21 @@ main {
 
 /* I ordered the z-index incase domcontentload gives the first rendered columns z-index precedence? usually since third column is the last rendered absolute element, it will always be on top of all its siblings - but in case it fails I have this hardcoded here */
 
-.window-tab.first-column {
+#first-column.window-content {
   z-index: 1;
 }
 
-.window-tab.second-column {
+#second-column.window-content {
   z-index: 2;
 }
 
-.window-tab.third-column {
+#third-column.window-content {
   z-index: 3;
 }
 
-/* .window-tab.highest-z {
-  z-index: 4;
-} */
-
-/* Gallery Slider */
+/* --------------------------------------------------- */
+/* ----------------- Gallery Slider ------------------ */
+/* --------------------------------------------------- */
 .gallery {
   height: 100%;
   display: flex;

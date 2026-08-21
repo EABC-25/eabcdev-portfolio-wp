@@ -7,8 +7,12 @@ if (!defined('ABSPATH')) {
 
 <?php get_header(); ?>
 <article class="window">
+    <?php get_template_part('template-parts/window-tab', 'project', [
+        'colored' => true
+    ]); ?>       
     <section class="window-tab">
-        <?php get_template_part('template-parts/sub-header', 'project'); ?>
+    </section>
+    <section class="window-tab">
     </section>
 </article>
 

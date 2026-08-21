@@ -17,23 +17,20 @@ $images = eabcdev_portfolio_get_project_images($project_id);
 get_header(); 
 ?>
 <section class="window">
-  <section class="window-tab">
+  <?php get_template_part('template-parts/window-tab', 'project', [
+    'colored' => false
+  ]); ?>
+  <?php get_template_part('template-parts/window-tab', 'project-name', [
+    'project-id' => $project_id,
+    'project-name-slug' => $project_name_slug,
+    'images' => 'NO DISPLAY',
+    'colored' => false,
+  ]); ?>
+  <section class="window-tab colored" id="third-column">
     <div class="window-tab-header">
-      <h1>project</h1>
+      <h1><?php echo esc_html($image_slug); ?></h1>
     </div>
-    <section class="window-content first-column">
-      project content
-    </section>
-  </section>
-  <section class="window-tab">
-    <div class="window-tab-header"><h1>project-name</h1></div>
-    <section class="window-content second-column">
-      project name content
-    </section>
-  </section>
-  <section class="window-tab colored">
-    <div class="window-tab-header"><h1>project-images</h1></div>
-    <section class="window-content third-column">
+    <section class="window-content">
       <div class="gallery">
         <div class="featured">
           <?php echo wp_get_attachment_image($image['image_id'], 'large') ?>
