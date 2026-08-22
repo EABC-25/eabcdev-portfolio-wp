@@ -21,8 +21,23 @@
     </h1>
   </div>
   <section class="window-content">
-    <ul class="projects-list">
-    <?php foreach ($projects as $project) : ?>
+    <article>
+      <section class="project-fields">
+        <div id="name">
+          <p>Name</p>
+        </div>
+        <div id="date-modified">
+          <p>Date modified</p>
+        </div>
+        <div id="type">
+          <p>Type</p>
+        </div>
+        <div id="status">
+          <p>Status</p>
+        </div>
+      </section>
+      <ul class="projects-list">
+      <?php foreach ($projects as $project) : ?>
       <li>
         <a 
           href="<?php echo get_permalink($project); ?>"
@@ -30,8 +45,9 @@
           <?php echo esc_html($project->post_title); ?>
         </a>
       </li>
-    <?php endforeach; ?>
-    </ul>
+      <?php endforeach; ?>
+      </ul>
+    </article>
   </section>
 </section>
   

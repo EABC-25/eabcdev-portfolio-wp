@@ -4,16 +4,19 @@
 
 :root {
   --bg-gray: #666666;
+  --bg-shale: #2e2e2e;
   --bg-test: green;
   --bg-main: #1c2226;
   --bg-black: #121212;
   --text-main: #c5c5c5;
   --text-white: #ffffff;
-  --border-style: #666666 1px solid;
-  --global-max-margin: 5px;
-  --global-min-margin: 2px;
-  --global-min-border-radius: 5px;
-  --global-max-border-radius: 10px;
+  --border-style: var(--bg-gray) 1px solid;
+  --ultra-max-spacing: 20px;
+  --max-spacing: 10px;
+  --med-spacing: 5px;
+  --min-spacing: 2px;
+  --min-border-radius: 5px;
+  --max-border-radius: 10px;
   --scroll-bar-color: #888;
   --font-size-small: 12px;
   --font-size-medium: 14px;
@@ -134,7 +137,7 @@ main {
 .menu {
   display: flex;
   padding: 0;
-  margin: var(--global-max-margin);
+  margin: var(--med-spacing);
   gap: 8px;
 }
 
@@ -150,9 +153,9 @@ main {
 .window {
   display: flex;
   flex: 1;
-  gap: var(--global-min-margin);
+  gap: var(--min-spacing);
   position: relative;
-  margin: var(--global-max-margin);
+  margin: var(--med-spacing);
 }
 
 .window-tab {
@@ -160,7 +163,7 @@ main {
   flex-direction: column;
   flex: 1;
   max-width: 150px;
-  border-top-right-radius: var(--global-min-border-radius);
+  border-top-right-radius: var(--min-border-radius);
 }
 
 .window-tab.colored {
@@ -177,7 +180,7 @@ main {
   user-select: none;
   cursor: pointer;
   background-color: var(--bg-gray);
-  border-top-right-radius: var(--global-min-border-radius);
+  border-top-right-radius: var(--min-border-radius);
 }
 
 .window-tab-header h1 {
@@ -213,10 +216,18 @@ main {
   position: absolute;
   right: 0px;
   left: 0px;
-  top: calc(30px + var(--global-min-margin));
+  top: calc(30px + var(--min-spacing));
   bottom: 0px;
   background-color: var(--bg-gray);
-  padding: var(--global-min-margin);
+  padding: var(--min-spacing);
+}
+
+.window-content article {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: var(--bg-shale);
 }
 
 /* I ordered the z-index incase domcontentload gives the first rendered columns z-index precedence? usually since third column is the last rendered absolute element, it will always be on top of all its siblings - but in case it fails I have this hardcoded here */
@@ -234,10 +245,35 @@ main {
 }
 
 /* --------------------------------------------------- */
+/* ----------------- Projects List ------------------- */
+/* --------------------------------------------------- */
+
+.project-fields {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex: 1;
+  background-color: var(--bg-shale);
+  padding-left: var(--ultra-max-spacing);
+}
+
+.project-fields #name {
+  min-width: 150px;
+  width: 150px;
+  padding-top: var(--max-spacing);
+  padding-bottom: var(--max-spacing);
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  padding-left: var(--ultra-max-spacing);
+}
+
+/* --------------------------------------------------- */
 /* ----------------- Gallery Slider ------------------ */
 /* --------------------------------------------------- */
 .gallery {
-  height: 100%;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -263,7 +299,7 @@ main {
   height: 100%;
   width: auto;
   max-width: 80%;
-  gap: var(--global-max-margin);
+  gap: var(--med-spacing);
 }
 
 /* Target the scrollbar container (track) */
