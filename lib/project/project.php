@@ -30,6 +30,74 @@ function eabcdev_portfolio_register_post_types() {
 add_action('init', 'eabcdev_portfolio_register_post_types');
 
 /**
+ * Register custom taxonomies
+ */
+function eabcdev_register_taxonomies() {
+    // hierarchical true for all because I want them to appear as checkbox list in wp-admin UI
+    register_taxonomy(
+        'project_type', // machine name
+        ['project'], // attach to custom post types in array('project')
+        [
+            'labels'=> [
+                'name'=>__('Project Types', 'eabcdev-portfolio'),
+                'singular_name'=>__('Project Type', 'eabcdev-portfolio'),
+                'menu name'=>__('Project Types', 'eabcdev-portfolio')
+            ],
+            'public'=> true,
+            'show_ui'=> true,
+            'show_admin_column'=> true,
+            'sjow_in_rest'=> true,
+            'hierarchical'=> true, // true = behaves like categories (parent/child relationships); false = behaves like tags (flat list)
+            'rewrite'=> [
+                'slug'=>'project-type'
+            ],
+        ]
+    );
+
+    register_taxonomy(
+        'project_language', // machine name
+        ['project'], // attach to custom post types in array('project')
+        [
+            'labels'=> [
+                'name'=>__('Project Languages', 'eabcdev-portfolio'),
+                'singular_name'=>__('Project Language', 'eabcdev-portfolio'),
+                'menu name'=>__('Project Languages', 'eabcdev-portfolio')
+            ],
+            'public'=> true,
+            'show_ui'=> true,
+            'show_admin_column'=> true,
+            'sjow_in_rest'=> true,
+            'hierarchical'=> true, // true = behaves like categories (parent/child relationships); false = behaves like tags (flat list)
+            'rewrite'=> [
+                'slug'=>'project-language'
+            ],
+        ]
+    );
+
+    register_taxonomy(
+        'project_technology', // machine name
+        ['project'], // attach to custom post types in array('project')
+        [
+            'labels'=> [
+                'name'=>__('Project Technologies', 'eabcdev-portfolio'),
+                'singular_name'=>__('Project Technology', 'eabcdev-portfolio'),
+                'menu name'=>__('Project Technologies', 'eabcdev-portfolio')
+            ],
+            'public'=> true,
+            'show_ui'=> true,
+            'show_admin_column'=> true,
+            'sjow_in_rest'=> true,
+            'hierarchical'=> true, // true = behaves like categories (parent/child relationships); false = behaves like tags (flat list)
+            'rewrite'=> [
+                'slug'=>'project-technology'
+            ],
+        ]
+    );
+}
+
+add_action('init', 'eabcdev_register_taxonomies');
+
+/**
  * project_image getter function
  */
 function eabcdev_portfolio_get_project_images($project_id) {
