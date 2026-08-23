@@ -93,6 +93,26 @@ function eabcdev_register_taxonomies() {
             ],
         ]
     );
+
+    register_taxonomy(
+        'project_status', // machine name
+        ['project'], // attach to custom post types in array('project')
+        [
+            'labels'=> [
+                'name'=>__('Project Status', 'eabcdev-portfolio'),
+                'singular_name'=>__('Project Status', 'eabcdev-portfolio'),
+                'menu name'=>__('Project Status', 'eabcdev-portfolio')
+            ],
+            'public'=> true,
+            'show_ui'=> true,
+            'show_admin_column'=> true,
+            'sjow_in_rest'=> true,
+            'hierarchical'=> true, // true = behaves like categories (parent/child relationships); false = behaves like tags (flat list)
+            'rewrite'=> [
+                'slug'=>'project-status'
+            ],
+        ]
+    );
 }
 
 add_action('init', 'eabcdev_register_taxonomies');
