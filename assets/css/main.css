@@ -233,21 +233,22 @@ main {
 /* I ordered the z-index incase domcontentload gives the first rendered columns z-index precedence? usually since third column is the last rendered absolute element, it will always be on top of all its siblings - but in case it fails I have this hardcoded here */
 
 #first-column.window-content {
-  z-index: 1;
+  z-index: 11;
 }
 
 #second-column.window-content {
-  z-index: 2;
+  z-index: 12;
 }
 
 #third-column.window-content {
-  z-index: 3;
+  z-index: 13;
 }
 
 /* --------------------------------------------------- */
 /* ----------------- Projects List ------------------- */
 /* --------------------------------------------------- */
 .project-table {
+  position: relative;
   display: flex;
 }
 
@@ -256,21 +257,40 @@ main {
   flex-direction: column;
 }
 
-.project-table ul li {
-  min-width: 150px;
-  width: 150px;
-  padding-top: var(--max-spacing);
-  padding-bottom: var(--max-spacing);
+.project-table .names-column {
+  position: sticky;
+  left: 0;
 }
 
-.project-table ul .field {
+.project-table ul li {
+  display: block;
+  min-width: 120px;
+  width: 120px;
+  height: 40px;
+  max-height: 40px;
+  padding-top: var(--max-spacing);
+  padding-bottom: var(--max-spacing);
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.project-table ul li p {
+  display: block;
+}
+
+.project-table ul .field#type,
+.project-table ul .field#language,
+.project-table ul .field#technology,
+.project-table ul .field#stat {
   position: sticky;
   top: 0;
   border-right: var(--border-style);
   background-color: var(--bg-shale);
+  z-index: 1;
 }
 
 .project-table ul #name {
+  border-right: var(--border-style);
   padding-left: var(--ultra-max-spacing);
 }
 

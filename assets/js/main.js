@@ -25,12 +25,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!windowContent) {
           continue;
         }
-        windowContent.style.zIndex = 0;
+        windowContent.style.zIndex = 10;
       }
 
       el.target
         .closest("section")
-        .querySelector(".window-content").style.zIndex = 1;
+        .querySelector(".window-content").style.zIndex = 11;
 
       if (el.target.parentElement.className !== "window-tab") {
         el.target.parentElement.parentElement.classList.add("colored");
