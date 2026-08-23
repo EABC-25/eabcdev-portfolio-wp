@@ -247,27 +247,38 @@ main {
 /* --------------------------------------------------- */
 /* ----------------- Projects List ------------------- */
 /* --------------------------------------------------- */
-
-.project-fields {
-  position: sticky;
-  top: 0;
+.project-table {
   display: flex;
-  flex: 1;
-  background-color: var(--bg-shale);
-  padding-left: var(--ultra-max-spacing);
 }
 
-.project-fields #name {
+.project-table ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-table ul li {
   min-width: 150px;
   width: 150px;
   padding-top: var(--max-spacing);
   padding-bottom: var(--max-spacing);
 }
 
-.projects-list {
-  display: flex;
-  flex-direction: column;
+.project-table ul .field {
+  position: sticky;
+  top: 0;
+  border-right: var(--border-style);
+  background-color: var(--bg-shale);
+}
+
+.project-table ul #name {
   padding-left: var(--ultra-max-spacing);
+}
+
+.project-table ul #type,
+.project-table ul #language,
+.project-table ul #technology,
+.project-table ul #stat {
+  padding-left: var(--med-spacing);
 }
 
 /* --------------------------------------------------- */

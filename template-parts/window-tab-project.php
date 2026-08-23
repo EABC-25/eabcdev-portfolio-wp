@@ -22,31 +22,45 @@
   </div>
   <section class="window-content">
     <article>
-      <section class="project-fields">
-        <div id="name">
-          <p>Name</p>
-        </div>
-        <div id="date-modified">
-          <p>Date modified</p>
-        </div>
-        <div id="type">
-          <p>Type</p>
-        </div>
-        <div id="status">
-          <p>Status</p>
-        </div>
+      <section class="project-table">
+        <ul class="names-column">
+          <li class="field" id="name">
+            <p>Name</p>
+          </li>
+          <?php foreach ($projects as $project) : ?>
+            <li class="value" id="name">
+              <a href="<?php echo get_permalink($project); ?>">
+                <?php echo esc_html($project->post_title); ?>
+              </a>
+            </li>
+          <?php endforeach; ?>
+          <?php for ($count = 0; $count <= 20; $count++) :?>
+            <li class="value" id="name">
+              test 
+            </li>
+          <?php endfor; ?>
+        </ul>
+        <ul class="types-column">
+          <li class="field" id="type">
+            <p>Type</p>
+          </li>
+        </ul>
+        <ul class="languages-column">
+          <li class="field" id="language">
+            <p>Languages</p>
+          </li>
+        </ul>
+        <ul class="technologies-column">
+          <li class="field" id="technology">
+            <p>Technologies</p>
+          </li>
+        </ul>
+        <ul class="status-column">
+          <li class="field" id="stat">
+            <p>Status</p>
+          </li>
+        </ul>
       </section>
-      <ul class="projects-list">
-      <?php foreach ($projects as $project) : ?>
-      <li>
-        <a 
-          href="<?php echo get_permalink($project); ?>"
-        >
-          <?php echo esc_html($project->post_title); ?>
-        </a>
-      </li>
-      <?php endforeach; ?>
-      </ul>
     </article>
   </section>
 </section>
