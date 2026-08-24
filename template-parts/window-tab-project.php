@@ -20,48 +20,102 @@
       <?php echo esc_html(ucfirst($post_slug))?>
     </h1>
   </div>
-  <section class="window-content">
-    <article>
-      <section class="project-table">
-        <ul class="names-column">
-          <li class="field" id="name">
-            <p>Name</p>
-          </li>
+  <section class="window-content first-column">
+    <section>
+      <div class="window-wide-screen">
+        <section class="projects-table">
+        <section class="projects-fields">
+          <div class="name">
+            <h1>
+              Name
+            </h1>
+          </div>
+          <div class="type">
+            <h1>
+              Type
+            </h1>
+          </div>
+          <div class="language">
+            <h1>
+              Languages
+            </h1>
+          </div>
+          <div class="technology">
+            <h1>
+              Technologies
+            </h1>
+          </div>
+          <div class="stat">
+            <h1>
+              Status
+            </h1>
+          </div>
+        </section>
+        <ul class="projects-list">
           <?php foreach ($projects as $project) : ?>
-            <li class="value" id="name">
-              <a href="<?php echo get_permalink($project); ?>">
-                <?php echo esc_html($project->post_title); ?>
-              </a>
+            <li>
+              <div class="name">
+                <a href="<?php echo get_permalink($project); ?>">
+                  <h1>
+                    <?php echo esc_html($project->post_title); ?>
+                  </h1>
+                </a>
+              </div>
+              <div class="type">
+                <h1>
+                  test type
+                </h1>
+              </div>
+              <div class="language">
+                <h1>
+                  test language test language test language test language test language
+                </h1>
+              </div>
+              <div class="technology">
+                <h1>
+                  test technology
+                </h1>
+              </div>
+              <div class="stat">
+                <h1>
+                  test stat
+                </h1>
+              </div>
             </li>
           <?php endforeach; ?>
-          <?php for ($count = 0; $count <= 20; $count++) :?>
-            <li class="value" id="name">
-              <p>testsssssssssssssssss ssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
-            </li>
-          <?php endfor; ?>
-        </ul>
-        <ul class="types-column">
-          <li class="field" id="type">
-            <p>Type</p>
+          <?php for ($i = 0; $i <= 30; $i++) : ?>
+          <li>
+            <div class="name">
+              <h1>
+                test name
+              </h1>
+            </div>
+            <div class="type">
+              <h1>
+                test type
+              </h1>
+            </div>
+            <div class="language">
+              <h1>
+                test language test language test language test language test language
+              </h1>
+            </div>
+            <div class="technology">
+              <h1>
+                test technology
+              </h1>
+            </div>
+            <div class="stat">
+              <h1>
+                test stat
+              </h1>
+            </div>
           </li>
-        </ul>
-        <ul class="languages-column">
-          <li class="field" id="language">
-            <p>Languages</p>
-          </li>
-        </ul>
-        <ul class="technologies-column">
-          <li class="field" id="technology">
-            <p>Technologies</p>
-          </li>
-        </ul>
-        <ul class="status-column">
-          <li class="field" id="stat">
-            <p>Status</p>
-          </li>
+        <?php endfor; ?>
         </ul>
       </section>
-    </article>
+      </div>
+    </section>
   </section>
 </section>
   

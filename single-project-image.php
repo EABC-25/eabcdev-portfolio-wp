@@ -30,8 +30,8 @@ get_header();
     <div class="window-tab-header">
       <h1><?php echo esc_html($image_slug); ?></h1>
     </div>
-    <section class="window-content">
-      <article class="gallery">
+    <section class="window-content third-column">
+      <section class="gallery">
         <div class="featured">
           <?php echo wp_get_attachment_image($image['image_id'], 'large') ?>
         </div>
@@ -55,7 +55,7 @@ get_header();
             <?php endif; ?>
           </div>
         </div>
-      </article>
+      </section>
     </section>
   </section>
 </section>

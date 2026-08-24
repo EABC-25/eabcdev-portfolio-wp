@@ -17,7 +17,7 @@
     <h1><?php echo esc_html($project_name_slug); ?></h1>
   </div>
 
-  <section class="window-content">
+  <section class="window-content second-column">
     <?php if ($images && $images !== 'NO DISPLAY') : ?>
       <h1>Project Images:</h1>
       <?php foreach ($images as $image) : ?>

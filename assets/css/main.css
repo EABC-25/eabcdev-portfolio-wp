@@ -222,7 +222,7 @@ main {
   padding: var(--min-spacing);
 }
 
-.window-content article {
+.window-content > section {
   position: relative;
   height: 100%;
   width: 100%;
@@ -232,73 +232,83 @@ main {
 
 /* I ordered the z-index incase domcontentload gives the first rendered columns z-index precedence? usually since third column is the last rendered absolute element, it will always be on top of all its siblings - but in case it fails I have this hardcoded here */
 
-#first-column.window-content {
+.window-content.first-column {
   z-index: 11;
 }
 
-#second-column.window-content {
+.window-content.second-column {
   z-index: 12;
 }
 
-#third-column.window-content {
+.window-content.third-column {
   z-index: 13;
 }
 
 /* --------------------------------------------------- */
 /* ----------------- Projects List ------------------- */
 /* --------------------------------------------------- */
-.project-table {
-  position: relative;
+.projects-table {
   display: flex;
+  flex-direction: column;
+  min-width: max-content;
 }
 
-.project-table ul {
-  display: flex;
+.projects-list {
   flex-direction: column;
 }
 
-.project-table .names-column {
-  position: sticky;
-  left: 0;
-}
-
-.project-table ul li {
-  display: block;
-  min-width: 120px;
-  width: 120px;
-  height: 40px;
-  max-height: 40px;
-  padding-top: var(--max-spacing);
-  padding-bottom: var(--max-spacing);
-  word-wrap: break-word;
-  white-space: normal;
-}
-
-.project-table ul li p {
-  display: block;
-}
-
-.project-table ul .field#type,
-.project-table ul .field#language,
-.project-table ul .field#technology,
-.project-table ul .field#stat {
+.projects-fields {
+  display: flex;
   position: sticky;
   top: 0;
-  border-right: var(--border-style);
+  z-index: 2;
   background-color: var(--bg-shale);
+}
+
+.projects-table .name {
+  position: sticky;
+  left: 0;
   z-index: 1;
-}
-
-.project-table ul #name {
-  border-right: var(--border-style);
   padding-left: var(--ultra-max-spacing);
+  background-color: var(--bg-shale);
 }
 
-.project-table ul #type,
-.project-table ul #language,
-.project-table ul #technology,
-.project-table ul #stat {
-  padding-left: var(--med-spacing);
+.projects-fields > .name {
+  z-index: 3;
+}
+
+.projects-fields,
+.projects-list li {
+  display: grid;
+  grid-template-columns: 150px 100px 150px 150px 100px;
+  /* for wide screens later */
+  /* grid-template-columns: 250px 200px 350px 250px 200px; */
+}
+
+.projects-fields div,
+.projects-list li div {
+  display: flex;
+  word-wrap: break-word;
+  white-space: normal;
+  padding: var(--max-spacing);
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.projects-list li div {
+  border-bottom: var(--border-style);
+}
+
+.projects-fields div {
+  border-right: var(--border-style);
+}
+
+.projects-list li > .name {
+  border-right: var(--border-style);
+}
+
+.projects-list .name h1 {
+  font-weight: 500;
 }
 
 /* --------------------------------------------------- */
@@ -373,4 +383,13 @@ main {
   height: 100%;
   width: 100%;
   object-fit: contain;
+}
+
+@media screen and (max-width: 750px) {
+  /* .window-content {
+  } */
+
+  .window-wide-screen {
+    min-width: max-content;
+  }
 }
