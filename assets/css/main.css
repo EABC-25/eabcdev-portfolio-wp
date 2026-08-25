@@ -27,6 +27,12 @@ html {
   box-sizing: border-box;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 h1,
 h2,
 h3,
@@ -250,7 +256,7 @@ main {
 .projects-table {
   display: flex;
   flex-direction: column;
-  min-width: max-content;
+  min-width: min-content;
 }
 
 .projects-list {
@@ -277,15 +283,32 @@ main {
   z-index: 3;
 }
 
-.projects-fields,
+.projects-fields li,
 .projects-list li {
-  display: grid;
-  grid-template-columns: 150px 100px 150px 150px 100px;
-  /* for wide screens later */
-  /* grid-template-columns: 250px 200px 350px 250px 200px; */
+  width: fit-content;
 }
 
-.projects-fields div,
+.projects-fields li > .name,
+.projects-fields li > .language,
+.projects-fields li > .technology,
+.projects-list li > .name,
+.projects-list li > .language,
+.projects-list li > .technology {
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+}
+
+.projects-fields li > .type,
+.projects-fields li > .stat,
+.projects-list li > .type,
+.projects-list li > .stat {
+  width: 100px;
+  min-width: 100px;
+  max-width: 100px;
+}
+
+.projects-fields li div,
 .projects-list li div {
   display: flex;
   word-wrap: break-word;
@@ -299,7 +322,7 @@ main {
   border-bottom: var(--border-style);
 }
 
-.projects-fields div {
+.projects-fields li div {
   border-right: var(--border-style);
 }
 
@@ -385,11 +408,65 @@ main {
   object-fit: contain;
 }
 
-@media screen and (max-width: 750px) {
-  /* .window-content {
-  } */
-
-  .window-wide-screen {
-    min-width: max-content;
+@media screen and (min-width: 750px) {
+  .projects-fields {
+    position: relative;
+    z-index: 0;
+    margin-left: var(--ultra-max-spacing);
   }
+
+  .projects-list {
+    margin-left: var(--ultra-max-spacing);
+  }
+
+  .projects-table .name {
+    position: relative;
+    z-index: 0;
+    background-color: transparent;
+  }
+
+  .projects-list li {
+    background-color: transparent;
+    margin-top: var(--max-spacing);
+    margin-bottom: var(--max-spacing);
+  }
+
+  .projects-table li > div {
+    border-bottom: none;
+  }
+
+  .projects-list li > .name {
+    border-right: none;
+  }
+
+  .projects-fields li > .name,
+  .projects-fields li > .language,
+  .projects-fields li > .technology,
+  .projects-list li > .name,
+  .projects-list li > .language,
+  .projects-list li > .technology {
+    width: 250px;
+    min-width: 250px;
+    max-width: 250px;
+  }
+
+  .projects-fields li > .type,
+  .projects-fields li > .stat,
+  .projects-list li > .type,
+  .projects-list li > .stat {
+    width: 200px;
+    min-width: 200px;
+    max-width: 200px;
+  }
+
+  .projects-list li:hover {
+    background-color: var(--bg-gray);
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  /* .projects-fields,
+  .projects-list li {
+  
+  } */
 }

@@ -22,10 +22,10 @@
   </div>
   <section class="window-content first-column">
     <section>
-      <div class="window-wide-screen">
-        <section class="projects-table">
-        <section class="projects-fields">
-          <div class="name">
+      <section class="projects-table">
+        <ul class="projects-fields">
+          <li>
+            <div class="name">
             <h1>
               Name
             </h1>
@@ -50,7 +50,8 @@
               Status
             </h1>
           </div>
-        </section>
+          </li>
+        </ul>
         <ul class="projects-list">
           <?php foreach ($projects as $project) : ?>
             <li>
@@ -114,7 +115,6 @@
         <?php endfor; ?>
         </ul>
       </section>
-      </div>
     </section>
   </section>
 </section>
