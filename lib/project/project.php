@@ -118,6 +118,20 @@ function eabcdev_register_taxonomies() {
 add_action('init', 'eabcdev_register_taxonomies');
 
 /**
+ * project taxonomies getter function
+ */
+
+function eabcdev_portfolio_get_project_taxonomies($project_id) {
+    return [
+        'type' => get_the_terms($project_id, 'project_type'),
+        'languages' => get_the_terms($project_id, 'project_language'),
+        'technologies' => get_the_terms($project_id, 'project_technology'),
+        'status' => get_the_terms($project_id, 'project_status'),
+    ];
+}
+
+
+/**
  * project_image getter function
  */
 function eabcdev_portfolio_get_project_images($project_id) {

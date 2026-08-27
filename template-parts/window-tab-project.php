@@ -53,66 +53,44 @@
           </li>
         </ul>
         <ul class="projects-list">
-          <?php foreach ($projects as $project) : ?>
+          <?php foreach ($projects as $project) : 
+              $taxonomies = eabcdev_portfolio_get_project_taxonomies($project->ID);
+              
+              $type = $taxonomies['type'];
+              $languages = $taxonomies['languages'];
+              $technologies = $taxonomies['technologies'];
+              $status = $taxonomies['status'];
+              $project_fl = mb_substr($project->post_title, 0, 1)
+          ?>
             <li>
               <div class="name">
                 <a href="<?php echo get_permalink($project); ?>">
+                  <?php get_template_part('template-parts/window-tab', 'project-icon', [
+                    'fl' => $project_fl
+                  ]); ?>
                   <h1>
                     <?php echo esc_html($project->post_title); ?>
                   </h1>
                 </a>
               </div>
-              <div class="type">
-                <h1>
-                  test type
-                </h1>
-              </div>
-              <div class="language">
-                <h1>
-                  test language test language test language test language test language
-                </h1>
-              </div>
-              <div class="technology">
-                <h1>
-                  test technology
-                </h1>
-              </div>
-              <div class="stat">
-                <h1>
-                  test stat
-                </h1>
-              </div>
+              <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
+                'class' => 'type',
+                'values' => $type,
+              ]); ?>
+              <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
+                'class' => 'language',
+                'values' => $languages,
+              ]); ?>
+              <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
+                'class' => 'technology',
+                'values' => $technologies,
+              ]); ?>
+              <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
+                'class' => 'stat',
+                'values' => $status,
+              ]); ?>
             </li>
           <?php endforeach; ?>
-          <?php for ($i = 0; $i <= 30; $i++) : ?>
-          <li>
-            <div class="name">
-              <h1>
-                test name
-              </h1>
-            </div>
-            <div class="type">
-              <h1>
-                test type
-              </h1>
-            </div>
-            <div class="language">
-              <h1>
-                test language test language test language test language test language
-              </h1>
-            </div>
-            <div class="technology">
-              <h1>
-                test technology
-              </h1>
-            </div>
-            <div class="stat">
-              <h1>
-                test stat
-              </h1>
-            </div>
-          </li>
-        <?php endfor; ?>
         </ul>
       </section>
     </section>

@@ -233,7 +233,7 @@ main {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: var(--bg-shale);
+  background-color: var(--bg-black);
 }
 
 /* I ordered the z-index incase domcontentload gives the first rendered columns z-index precedence? usually since third column is the last rendered absolute element, it will always be on top of all its siblings - but in case it fails I have this hardcoded here */
@@ -254,9 +254,11 @@ main {
 /* ----------------- Projects List ------------------- */
 /* --------------------------------------------------- */
 .projects-table {
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   min-width: min-content;
+  background-color: var(--bg-black);
 }
 
 .projects-list {
@@ -268,7 +270,6 @@ main {
   position: sticky;
   top: 0;
   z-index: 2;
-  background-color: var(--bg-shale);
 }
 
 .projects-table .name {
@@ -280,6 +281,7 @@ main {
 }
 
 .projects-fields > .name {
+  background-color: var(--bg-shale);
   z-index: 3;
 }
 
@@ -314,15 +316,17 @@ main {
   word-wrap: break-word;
   white-space: normal;
   padding: var(--max-spacing);
-  align-items: flex-end;
-  justify-content: flex-start;
+  align-content: flex-end;
+  flex-wrap: wrap;
+  gap: var(--med-spacing);
 }
 
-.projects-list li div {
+.projects-list li > div {
   border-bottom: var(--border-style);
 }
 
-.projects-fields li div {
+.projects-fields li > div {
+  background-color: var(--bg-shale);
   border-right: var(--border-style);
 }
 
@@ -331,7 +335,35 @@ main {
 }
 
 .projects-list .name h1 {
+  align-items: center;
   font-weight: 500;
+}
+
+.projects-list li div h1 {
+  padding: var(--med-spacing) var(--max-spacing);
+  background-color: var(--bg-shale);
+  border-radius: var(--med-spacing);
+}
+
+.projects-list li .name h1 {
+  background-color: transparent;
+}
+
+.project-icon {
+  position: relative;
+}
+
+.project-icon svg {
+  color: var(--text-main);
+  height: 50px;
+  width: 50px;
+}
+
+.project-icon > .fl {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* --------------------------------------------------- */
@@ -419,7 +451,7 @@ main {
     margin-left: var(--ultra-max-spacing);
   }
 
-  .projects-table .name {
+  .projects-list li .name {
     position: relative;
     z-index: 0;
     background-color: transparent;
@@ -457,6 +489,10 @@ main {
     width: 200px;
     min-width: 200px;
     max-width: 200px;
+  }
+
+  .projects-list li {
+    background-color: rgb(57, 57, 57);
   }
 
   .projects-list li:hover {
