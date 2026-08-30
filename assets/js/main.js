@@ -5,6 +5,38 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  // Projects Column (at the very top, because for sure whenever there's windowEl - #first-column will also exist)
+  const windowFirstColumn = windowEl.querySelector("#first-column");
+
+  const projectsList = windowFirstColumn.querySelector(".projects-list");
+
+  if (!windowFirstColumn || !projectsList) {
+    return;
+  }
+
+  projectsList.addEventListener("click", el => {
+    if (
+      el.target.classList.contains("project-list-header") ||
+      el.target.parentElement.classList.contains("project-list-header")
+    ) {
+      const listParent = el.target.closest("li");
+      const listParentFullHeight = listParent.getBoundingClientRect().height;
+      // bro google ai taught me this lol
+      if (!listParent.parentElement.classList.contains("active")) {
+        // Snap it right back to the closed state instantly so it can animate
+        listParent.parentElement.style.height = "30px";
+        // Force a browser "reflow" so it registers the snap-back before animating
+        listParent.parentElement.offsetHeight;
+        // INJECT HEIGHT
+        listParent.parentElement.classList.add("active");
+        listParent.parentElement.style.height = `${listParentFullHeight}px`;
+      } else {
+        listParent.parentElement.classList.remove("active");
+        listParent.parentElement.style.height = "30px";
+      }
+    }
+  });
+
   const windowHeaders = document.querySelectorAll(".window-tab-header");
   // exit if there's only 1 .window-tab-header div
   // I can also remove cursor pointer css for the single .window-tab-header div since we are not going to be implementing click fnctionality - but maybe for now that's gonna be a future to do
@@ -40,6 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Project Images Column
   const windowThirdColumn = windowEl.querySelector("#third-column");
 
   if (!windowThirdColumn) {

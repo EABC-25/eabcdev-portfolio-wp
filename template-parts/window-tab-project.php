@@ -27,7 +27,7 @@
           <li>
             <div class="name">
             <h1>
-              Name
+              
             </h1>
           </div>
           <div class="type">
@@ -62,16 +62,14 @@
               $status = $taxonomies['status'];
               $project_fl = mb_substr($project->post_title, 0, 1)
           ?>
+          <div class="relative">
             <li>
               <div class="name">
-                <a href="<?php echo get_permalink($project); ?>">
-                  <?php get_template_part('template-parts/window-tab', 'project-icon', [
-                    'fl' => $project_fl
-                  ]); ?>
-                  <h1>
+                <div class="project-list-header">
+                  <h2>
                     <?php echo esc_html($project->post_title); ?>
-                  </h1>
-                </a>
+                  </h2>
+                </div>
               </div>
               <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
                 'class' => 'type',
@@ -90,7 +88,20 @@
                 'values' => $status,
               ]); ?>
             </li>
+          </div> 
           <?php endforeach; ?>
+          <div>
+            <li>
+              <div class="name">
+                <div class="project-list-header-closer">
+                </div>
+              </div>
+              <div class="type"></div>
+              <div class="language"></div>
+              <div class="technology"></div>
+              <div class="stat"></div>
+            </li> 
+          </div>
         </ul>
       </section>
     </section>
