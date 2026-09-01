@@ -254,7 +254,6 @@ main {
 /* ----------------- Projects List ------------------- */
 /* --------------------------------------------------- */
 .projects-table {
-  min-height: 100%;
   display: flex;
   flex-direction: column;
   min-width: min-content;
@@ -262,8 +261,8 @@ main {
 }
 
 .projects-list {
-  flex-direction: column;
-  flex-grow: 1;
+  display: grid;
+  grid-template-rows: 1fr;
 }
 
 .projects-list .relative {
@@ -271,11 +270,25 @@ main {
   transition: height 0.5s ease-in-out;
 }
 
+.projects-list .relative h1 {
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.projects-list .relative.active h1 {
+  opacity: 1;
+}
+
 .projects-fields {
   display: flex;
-  position: absolute;
+  position: sticky;
   top: 0;
   z-index: 2;
+  height: 15px;
+}
+
+.projects-fields li div {
+  position: relative;
 }
 
 .projects-table .name {
@@ -306,6 +319,11 @@ main {
   );
 }
 
+/* I can control this element's height to fill the remaining space by using javascript... */
+.projects-list .project-last li {
+  min-height: 400px;
+}
+
 .projects-list li .name .project-list-header-closer {
   height: 100%;
   width: 100%;
@@ -329,6 +347,10 @@ main {
 
 .projects-fields li {
   background-color: var(--bg-black);
+}
+
+.projects-list li {
+  min-height: 150px;
 }
 
 .projects-fields li,
@@ -388,17 +410,18 @@ main {
   );
 }
 
-.projects-fields li > .language,
-.projects-fields li > .technology,
-.projects-fields li > .type,
-.projects-fields li > .stat {
-  padding: var(--max-spacing) var(--med-spacing) var(--med-spacing)
-    var(--max-spacing);
-  border-right: var(--border-style);
-}
-
 .projects-list li > .stat {
   border-top-right-radius: var(--min-border-radius);
+}
+
+.projects-fields li div h1 {
+  position: absolute;
+  top: 15px;
+  height: 30px;
+  width: 100%;
+  padding: var(--med-spacing) var(--max-spacing);
+  border-right: var(--border-style);
+  background-color: var(--bg-black);
 }
 
 .projects-list .name h1 {

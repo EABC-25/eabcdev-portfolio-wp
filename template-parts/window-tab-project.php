@@ -26,10 +26,8 @@
         <ul class="projects-fields">
           <li>
             <div class="name">
-            <h1>
-              
-            </h1>
-          </div>
+    
+            </div>
           <div class="type">
             <h1>
               Type
@@ -45,7 +43,7 @@
               Technologies
             </h1>
           </div>
-          <div class="stat">
+          <div class="stat cell">
             <h1>
               Status
             </h1>
@@ -90,7 +88,7 @@
             </li>
           </div> 
           <?php endforeach; ?>
-          <div>
+          <div class="project-last">
             <li>
               <div class="name">
                 <div class="project-list-header-closer">
