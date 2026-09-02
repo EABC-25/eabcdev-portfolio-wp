@@ -43,7 +43,7 @@
               Technologies
             </h1>
           </div>
-          <div class="stat cell">
+          <div class="stat">
             <h1>
               Status
             </h1>

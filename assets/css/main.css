@@ -260,6 +260,10 @@ main {
   background-color: var(--bg-black);
 }
 
+.projects-fields {
+  display: none;
+}
+
 .projects-list {
   display: grid;
   grid-template-rows: 1fr;
@@ -279,26 +283,54 @@ main {
   opacity: 1;
 }
 
-.projects-fields {
-  display: flex;
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  height: 15px;
+.projects-list li {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 30px 1fr 1fr;
+  min-height: 350px;
 }
 
-.projects-fields li div {
-  position: relative;
-}
-
-.projects-table .name {
-  position: sticky;
-  left: 0;
-  z-index: 1;
-}
-
-.projects-list .name {
+.projects-list li > .name {
+  grid-column: 1;
+  grid-row: 1;
+  background-color: var(--bg-shale);
   z-index: 3;
+}
+
+.projects-list li > .type {
+  grid-column: 1;
+  grid-row: 2;
+  background-color: var(--bg-shale);
+}
+
+.projects-list li > .language {
+  grid-column: 2;
+  grid-row: 2;
+  border-top: var(--border-style);
+  background-color: var(--bg-shale);
+  border-top-right-radius: var(--min-border-radius);
+}
+
+.projects-list li > .technology {
+  grid-column: 1;
+  grid-row: 3;
+  background-color: var(--bg-shale);
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 30px,
+    var(--bg-black)
+  );
+}
+
+.projects-list li > .stat {
+  grid-column: 2;
+  grid-row: 3;
+  background-color: var(--bg-shale);
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 30px,
+    var(--bg-black)
+  );
 }
 
 .projects-list li .name .project-list-header {
@@ -309,14 +341,16 @@ main {
   padding-top: var(--max-spacing);
   padding-right: var(--max-spacing);
   border-top-right-radius: var(--min-border-radius);
-  background-color: var(--bg-shale);
   border-top: var(--border-style);
   background-color: var(--bg-shale);
-  background-image: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0) 30px,
-    var(--bg-black)
-  );
+}
+
+.projects-list li > .name .project-list-header h2 {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
 }
 
 /* I can control this element's height to fill the remaining space by using javascript... */
@@ -330,103 +364,28 @@ main {
   border-top: var(--border-style);
   border-top-right-radius: var(--min-border-radius);
   background-color: var(--bg-shale);
-  background-image: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0) 30px,
-    var(--bg-black)
-  );
 }
 
-.projects-list li > .name .project-list-header h2 {
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 100%;
-}
-
-.projects-fields li {
-  background-color: var(--bg-black);
-}
-
-.projects-list li {
-  min-height: 150px;
-}
-
-.projects-fields li,
-.projects-list li {
-  width: fit-content;
-}
-
-.projects-fields li > .name,
-.projects-list li > .name {
-  width: 150px;
-  min-width: 150px;
-  max-width: 150px;
-}
-
-.projects-fields li > .language,
-.projects-fields li > .technology,
-.projects-list li > .language,
-.projects-list li > .technology {
-  width: 150px;
-  min-width: 150px;
-  max-width: 150px;
-  display: flex;
-  word-wrap: break-word;
-  white-space: normal;
-  align-content: flex-end;
-  flex-wrap: wrap;
-  gap: var(--med-spacing);
-}
-
-.projects-fields li > .type,
-.projects-fields li > .stat,
-.projects-list li > .type,
-.projects-list li > .stat {
-  width: 120px;
-  min-width: 120px;
-  max-width: 120px;
-  display: flex;
-  word-wrap: break-word;
-  white-space: normal;
-  align-content: flex-end;
-  flex-wrap: wrap;
-  gap: var(--med-spacing);
-}
-
-.projects-list li > .language,
 .projects-list li > .technology,
-.projects-list li > .type,
 .projects-list li > .stat {
+  padding: 30px var(--max-spacing) 50px var(--max-spacing);
+  display: flex;
+  word-wrap: break-word;
+  white-space: normal;
+  align-content: flex-end;
+  flex-wrap: wrap;
+  gap: var(--med-spacing);
+}
+
+.projects-list li > .language,
+.projects-list li > .type {
   padding: 30px var(--max-spacing);
-  margin-top: 30px;
-  border-top: var(--border-style);
-  background-color: var(--bg-shale);
-  background-image: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0),
-    var(--bg-black)
-  );
-}
-
-.projects-list li > .stat {
-  border-top-right-radius: var(--min-border-radius);
-}
-
-.projects-fields li div h1 {
-  position: absolute;
-  top: 15px;
-  height: 30px;
-  width: 100%;
-  padding: var(--med-spacing) var(--max-spacing);
-  border-right: var(--border-style);
-  background-color: var(--bg-black);
-}
-
-.projects-list .name h1 {
-  align-items: center;
-  font-weight: 500;
+  display: flex;
+  word-wrap: break-word;
+  white-space: normal;
+  align-content: flex-end;
+  flex-wrap: wrap;
+  gap: var(--med-spacing);
 }
 
 .projects-list li div h1 {
@@ -435,25 +394,136 @@ main {
   border-radius: var(--med-spacing);
 }
 
-.projects-list li .name h1 {
-  background-color: transparent;
+@media screen and (min-width: 480px) {
+  .projects-fields {
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    height: 15px;
+  }
+
+  .projects-fields li div {
+    position: relative;
+  }
+
+  .projects-table .name {
+    position: sticky;
+    left: 0;
+  }
+
+  .projects-list li {
+    display: flex;
+    background-color: transparent;
+    min-height: 150px;
+  }
+
+  .projects-list li .name .project-list-header {
+    background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 30px,
+      var(--bg-black)
+    );
+  }
+
+  .projects-list li .name .project-list-header-closer {
+    background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 30px,
+      var(--bg-black)
+    );
+  }
+
+  .projects-list li > .language {
+    border-top-right-radius: 0px;
+  }
+
+  .projects-fields li {
+    background-color: var(--bg-black);
+  }
+
+  .projects-fields li,
+  .projects-list li {
+    width: fit-content;
+  }
+
+  .projects-fields li > .name,
+  .projects-list li > .name {
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+  }
+
+  .projects-fields li > .language,
+  .projects-fields li > .technology,
+  .projects-list li > .language,
+  .projects-list li > .technology {
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+  }
+
+  .projects-fields li > .type,
+  .projects-fields li > .stat,
+  .projects-list li > .type,
+  .projects-list li > .stat {
+    width: 120px;
+    min-width: 120px;
+    max-width: 120px;
+  }
+
+  .projects-list li > .language,
+  .projects-list li > .technology,
+  .projects-list li > .type,
+  .projects-list li > .stat {
+    margin-top: 30px;
+    padding: 30px var(--max-spacing);
+    border-top: var(--border-style);
+    background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0),
+      var(--bg-black)
+    );
+  }
+
+  .projects-list li > .stat {
+    border-top-right-radius: var(--min-border-radius);
+  }
+
+  .projects-fields li div h1 {
+    position: absolute;
+    top: 15px;
+    height: 30px;
+    width: 100%;
+    padding: var(--med-spacing) var(--max-spacing);
+    border-right: var(--border-style);
+    background-color: var(--bg-black);
+  }
+
+  .projects-list .name h1 {
+    align-items: center;
+    font-weight: 500;
+  }
 }
 
-.project-icon {
-  position: relative;
-}
+@media screen and (min-width: 750px) {
+  .projects-fields li > .language,
+  .projects-fields li > .technology,
+  .projects-list li > .language,
+  .projects-list li > .technology {
+    width: 280px;
+    min-width: 280px;
+    max-width: 280px;
+  }
 
-.project-icon svg {
-  color: var(--text-main);
-  height: 50px;
-  width: 50px;
-}
-
-.project-icon > .fl {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  .projects-fields li > .type,
+  .projects-fields li > .stat,
+  .projects-list li > .type,
+  .projects-list li > .stat {
+    width: 220px;
+    min-width: 220px;
+    max-width: 220px;
+  }
 }
 
 /* --------------------------------------------------- */
@@ -529,88 +599,4 @@ main {
   height: 100%;
   width: 100%;
   object-fit: contain;
-}
-
-@media screen and (min-width: 750px) {
-  .projects-fields li > .language,
-  .projects-fields li > .technology,
-  .projects-list li > .language,
-  .projects-list li > .technology {
-    width: 280px;
-    min-width: 280px;
-    max-width: 280px;
-  }
-
-  .projects-fields li > .type,
-  .projects-fields li > .stat,
-  .projects-list li > .type,
-  .projects-list li > .stat {
-    width: 220px;
-    min-width: 220px;
-    max-width: 220px;
-  }
-}
-/* .projects-fields {
-    position: relative;
-    z-index: 0;
-    margin-left: var(--ultra-max-spacing);
-  }
-
-  .projects-list {
-    margin-left: var(--ultra-max-spacing);
-  }
-
-  .projects-list li .name {
-    position: relative;
-    z-index: 0;
-    background-color: transparent;
-  }
-
-  .projects-list li {
-    background-color: transparent;
-    margin-top: var(--max-spacing);
-    margin-bottom: var(--max-spacing);
-  }
-
-  .projects-table li > div {
-    border-bottom: none;
-  }
-
-  .projects-list li > .name {
-    border-right: none;
-  }
-
-  .projects-fields li > .name,
-  .projects-fields li > .language,
-  .projects-fields li > .technology,
-  .projects-list li > .name,
-  .projects-list li > .language,
-  .projects-list li > .technology {
-    width: 250px;
-    min-width: 250px;
-    max-width: 250px;
-  }
-
-  .projects-fields li > .type,
-  .projects-fields li > .stat,
-  .projects-list li > .type,
-  .projects-list li > .stat {
-    width: 200px;
-    min-width: 200px;
-    max-width: 200px;
-  }
-
-  .projects-list li {
-    background-color: rgb(57, 57, 57);
-  }
-
-  .projects-list li:hover {
-    background-color: var(--bg-gray);
-  } */
-
-@media screen and (min-width: 1300px) {
-  /* .projects-fields,
-  .projects-list li {
-  
-  } */
 }
