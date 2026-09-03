@@ -71,18 +71,22 @@
               </div>
               <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
                 'class' => 'type',
+                'mobile-field' => 'Type',
                 'values' => $type,
               ]); ?>
               <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
                 'class' => 'language',
+                'mobile-field' => 'Languages',
                 'values' => $languages,
               ]); ?>
               <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
                 'class' => 'technology',
+                'mobile-field' => 'Technologies',
                 'values' => $technologies,
               ]); ?>
               <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
                 'class' => 'stat',
+                'mobile-field' => 'Status',
                 'values' => $status,
               ]); ?>
             </li>

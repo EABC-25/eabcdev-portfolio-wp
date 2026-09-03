@@ -11,6 +11,7 @@
   --text-main: #c5c5c5;
   --text-white: #ffffff;
   --border-style: var(--bg-gray) 1px solid;
+  --border-cover-style: var(--bg-shale) 1px solid;
   --ultra-max-spacing: 20px;
   --max-spacing: 10px;
   --med-spacing: 5px;
@@ -265,8 +266,8 @@ main {
 }
 
 .projects-list {
-  display: grid;
-  grid-template-rows: 1fr;
+  display: flex;
+  flex-direction: column;
 }
 
 .projects-list .relative {
@@ -284,47 +285,28 @@ main {
 }
 
 .projects-list li {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 30px 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   min-height: 350px;
 }
-
+/* do not put 100% height on block elements stretched to fit its parent by flex row because it will shrink to fit only its child */
 .projects-list li > .name {
-  grid-column: 1;
-  grid-row: 1;
-  background-color: var(--bg-shale);
+  background-color: transparent;
   z-index: 3;
 }
 
 .projects-list li > .type {
-  grid-column: 1;
-  grid-row: 2;
-  background-color: var(--bg-shale);
-}
-
-.projects-list li > .language {
-  grid-column: 2;
-  grid-row: 2;
   border-top: var(--border-style);
-  background-color: var(--bg-shale);
   border-top-right-radius: var(--min-border-radius);
+  background-color: var(--bg-shale);
 }
 
+.projects-list li > .language,
 .projects-list li > .technology {
-  grid-column: 1;
-  grid-row: 3;
   background-color: var(--bg-shale);
-  background-image: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0) 30px,
-    var(--bg-black)
-  );
 }
 
 .projects-list li > .stat {
-  grid-column: 2;
-  grid-row: 3;
   background-color: var(--bg-shale);
   background-image: linear-gradient(
     to bottom,
@@ -334,8 +316,9 @@ main {
 }
 
 .projects-list li .name .project-list-header {
+  min-height: 30px;
   height: 100%;
-  width: 100%;
+  width: 50%;
   display: block;
   padding-left: var(--max-spacing);
   padding-top: var(--max-spacing);
@@ -358,9 +341,15 @@ main {
   min-height: 400px;
 }
 
+.projects-list .project-last li > .name {
+  min-height: 30px;
+  background-color: transparent;
+}
+
 .projects-list li .name .project-list-header-closer {
+  min-height: 30px;
   height: 100%;
-  width: 100%;
+  width: 50%;
   border-top: var(--border-style);
   border-top-right-radius: var(--min-border-radius);
   background-color: var(--bg-shale);
@@ -414,11 +403,13 @@ main {
 
   .projects-list li {
     display: flex;
+    flex-direction: row;
     background-color: transparent;
     min-height: 150px;
   }
 
   .projects-list li .name .project-list-header {
+    width: 100%;
     background-image: linear-gradient(
       to bottom,
       rgba(255, 255, 255, 0) 30px,
@@ -434,7 +425,7 @@ main {
     );
   }
 
-  .projects-list li > .language {
+  .projects-list li > .type {
     border-top-right-radius: 0px;
   }
 
