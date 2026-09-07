@@ -33,6 +33,7 @@ get_header();
     <section class="window-content third-column">
       <section class="gallery">
         <div class="featured">
+          <!-- need to fix this, try loading ?images= and see how this line below exposes the error in the UI -->
           <?php echo wp_get_attachment_image($image['image_id'], 'large') ?>
         </div>
         <div class="slider-container">

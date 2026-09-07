@@ -3,15 +3,16 @@
 /* --------------------------------------------------- */
 
 :root {
-  --bg-gray: #666666;
-  --bg-shale: #2e2e2e;
-  --bg-test: green;
-  --bg-main: #1c2226;
-  --bg-black: #121212;
-  --text-main: #c5c5c5;
-  --text-white: #ffffff;
-  --border-style: var(--bg-gray) 1px solid;
-  --border-cover-style: var(--bg-shale) 1px solid;
+  --color-gray: #666666;
+  --color-shale: #2e2e2e;
+  --color-test: green;
+  --color-main: #1c2226;
+  --color-black: #121212;
+  --color-lightgray: #c5c5c5;
+  --color-white: #ffffff;
+  --border-style-gray: var(--color-gray) 1px solid;
+  --border-style-shale: var(--color-shale) 1px solid;
+  --border-style-white: var(--color-white) 1px solid;
   --ultra-max-spacing: 20px;
   --max-spacing: 10px;
   --med-spacing: 5px;
@@ -44,7 +45,7 @@ p {
   padding: 0;
   margin: 0;
   font-size: var(--font-size-small);
-  color: var(--text-main);
+  color: var(--color-lightgray);
 }
 
 ul,
@@ -56,7 +57,7 @@ a {
   padding: 0;
   margin: 0;
   font-size: var(--font-size-small);
-  color: var(--text-main);
+  color: var(--color-lightgray);
 }
 
 button {
@@ -68,8 +69,8 @@ button {
 /* --------------------------------------------------- */
 
 body {
-  color: var(--text-main);
-  background-color: var(--bg-main);
+  color: var(--color-lightgray);
+  background-color: var(--color-main);
   height: calc(100dvh - var(--wp-admin--admin-bar--height, 0px));
   overflow: hidden;
   /* Hide scrollbar for Chrome, Safari, and newer Opera */
@@ -85,7 +86,7 @@ body {
 }
 
 svg {
-  color: var(--text-main);
+  color: var(--color-lightgray);
   height: 20px;
   width: 20px;
 }
@@ -101,8 +102,8 @@ svg {
 header {
   width: 100%;
   display: flex;
-  border-top: var(--border-style);
-  border-bottom: var(--border-style);
+  border-top: var(--border-style-gray);
+  border-bottom: var(--border-style-gray);
 }
 
 header li {
@@ -173,7 +174,7 @@ main {
 }
 
 .window-tab.colored {
-  background-color: var(--bg-gray);
+  background-color: var(--color-gray);
 }
 
 .window-tab-header {
@@ -185,7 +186,7 @@ main {
   overflow: hidden;
   user-select: none;
   cursor: pointer;
-  background-color: var(--bg-gray);
+  background-color: var(--color-gray);
   border-top-right-radius: var(--min-border-radius);
 }
 
@@ -212,7 +213,7 @@ main {
 .tab-margin {
   height: 2px;
   width: 100%;
-  background-color: var(--bg-main);
+  background-color: var(--color-main);
 }
 
 .window-content {
@@ -224,7 +225,7 @@ main {
   left: 0px;
   top: calc(30px + var(--min-spacing));
   bottom: 0px;
-  background-color: var(--bg-gray);
+  background-color: var(--color-gray);
   padding: var(--min-spacing);
 }
 
@@ -232,9 +233,10 @@ main {
   position: relative;
   height: 100%;
   width: 100%;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   overscroll-behavior: none;
-  background-color: var(--bg-black);
+  background-color: var(--color-black);
 }
 
 /* I ordered the z-index incase domcontentload gives the first rendered columns z-index precedence? usually since third column is the last rendered absolute element, it will always be on top of all its siblings - but in case it fails I have this hardcoded here */
@@ -257,264 +259,131 @@ main {
 .projects-table {
   display: flex;
   flex-direction: column;
-  min-width: min-content;
-  background-color: var(--bg-black);
+  width: 100%;
+  background-color: var(--color-black);
 }
 
-.projects-fields {
-  display: none;
-}
-
-.projects-list {
-  display: flex;
-  flex-direction: column;
-}
-
-.projects-list .relative {
-  height: 30px;
-  transition: height 0.5s ease-in-out;
-}
-
-.projects-list .relative h1 {
+/* .projects-list .relative h1 {
   opacity: 0;
   transition: opacity 0.4s ease-in-out;
 }
 
 .projects-list .relative.active h1 {
   opacity: 1;
+} */
+
+.projects-filters {
+  min-height: 50px;
+  width: 100%;
+  background-color: var(--color-shale);
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--med-spacing);
 }
 
 .projects-list li {
   display: flex;
   flex-direction: column;
-  min-height: 350px;
-}
-/* do not put 100% height on block elements stretched to fit its parent by flex row because it will shrink to fit only its child */
-.projects-list li > .name {
-  background-color: transparent;
-  z-index: 3;
+  height: auto;
+  transition: height 0.5s ease-in-out;
+  padding: 0px var(--med-spacing);
 }
 
-.projects-list li > .type {
-  border-top: var(--border-style);
-  border-top-right-radius: var(--min-border-radius);
-  background-color: var(--bg-shale);
+.folder-top-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
 }
 
-.projects-list li > .language,
-.projects-list li > .technology {
-  background-color: var(--bg-shale);
-}
-
-.projects-list li > .stat {
-  background-color: var(--bg-shale);
-  background-image: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0) 30px,
-    var(--bg-black)
-  );
-}
-
-.projects-list li .name .project-list-header {
-  min-height: 30px;
-  height: 100%;
-  width: 50%;
-  display: block;
-  padding-left: var(--max-spacing);
-  padding-top: var(--max-spacing);
-  padding-right: var(--max-spacing);
-  border-top-right-radius: var(--min-border-radius);
-  border-top: var(--border-style);
-  background-color: var(--bg-shale);
-}
-
-.projects-list li > .name .project-list-header h2 {
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 100%;
-}
-
-/* I can control this element's height to fill the remaining space by using javascript... */
-.projects-list .project-last li {
-  min-height: 400px;
-}
-
-.projects-list .project-last li > .name {
-  min-height: 30px;
-  background-color: transparent;
-}
-
-.projects-list li .name .project-list-header-closer {
-  min-height: 30px;
-  height: 100%;
-  width: 50%;
-  border-top: var(--border-style);
-  border-top-right-radius: var(--min-border-radius);
-  background-color: var(--bg-shale);
-}
-
-.projects-list li > .technology,
-.projects-list li > .stat {
-  padding: 30px var(--max-spacing) 50px var(--max-spacing);
+.folder-top-layout .left {
+  height: 20px;
   display: flex;
-  word-wrap: break-word;
-  white-space: normal;
-  align-content: flex-end;
-  flex-wrap: wrap;
-  gap: var(--med-spacing);
+  background-color: var(--color-gray);
+  border-top-right-radius: var(--min-border-radius);
+  border-top: var(--border-style-white);
 }
 
-.projects-list li > .language,
-.projects-list li > .type {
-  padding: 30px var(--max-spacing);
+.folder-top-layout .right {
+  height: 1.5px;
   display: flex;
-  word-wrap: break-word;
-  white-space: normal;
-  align-content: flex-end;
-  flex-wrap: wrap;
-  gap: var(--med-spacing);
+  background-color: var(--color-gray);
+  border-top-right-radius: var(--min-border-radius);
+  border-top: var(--border-style-white);
 }
 
-.projects-list li div h1 {
+.project-list-header {
+  height: 30px;
+  background-color: var(--color-shale);
+  border-left: var(--border-style-gray);
+  border-right: var(--border-style-gray);
+}
+
+.folder-pane {
+  border-left: var(--border-style-gray);
+  border-right: var(--border-style-gray);
+  border-bottom: var(--border-style-gray);
+}
+
+.project-taxonomies {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.project-taxonomies {
+  height: max-content;
+  padding: var(--med-spacing);
+}
+
+.project-taxonomies h2 {
   padding: var(--med-spacing) var(--max-spacing);
-  background-color: var(--bg-gray);
-  border-radius: var(--med-spacing);
+  background-color: var(--color-gray);
+  border-radius: var(--max-border-radius);
+  white-space: nowrap;
+  text-wrap: nowrap;
+}
+
+.project-taxonomies .taxonomy {
+  display: flex;
+  gap: 10px;
+  padding-left: 10px;
+}
+
+/* CAROUSEL */
+.carousel {
+  position: relative;
+  width: 100%;
+  /* If we want to reuse this carousel, we need to make height dynamic or take input from a function or set with inline element style */
+  height: 30px;
+  overflow: hidden;
+}
+
+.chariot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+}
+
+.charioteer {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.chariot-sentinel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
 }
 
 @media screen and (min-width: 480px) {
-  .projects-fields {
-    display: flex;
-    position: sticky;
-    top: 0;
-    z-index: 2;
-    height: 15px;
-  }
-
-  .projects-fields li div {
-    position: relative;
-  }
-
-  .projects-table .name {
-    position: sticky;
-    left: 0;
-  }
-
-  .projects-list li {
-    display: flex;
-    flex-direction: row;
-    background-color: transparent;
-    min-height: 150px;
-  }
-
-  .projects-list li .name .project-list-header {
-    width: 100%;
-    background-image: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0) 30px,
-      var(--bg-black)
-    );
-  }
-
-  .projects-list li .name .project-list-header-closer {
-    background-image: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0) 30px,
-      var(--bg-black)
-    );
-  }
-
-  .projects-list li > .type {
-    border-top-right-radius: 0px;
-  }
-
-  .projects-fields li {
-    background-color: var(--bg-black);
-  }
-
-  .projects-fields li,
-  .projects-list li {
-    width: fit-content;
-  }
-
-  .projects-fields li > .name,
-  .projects-list li > .name {
-    width: 150px;
-    min-width: 150px;
-    max-width: 150px;
-  }
-
-  .projects-fields li > .language,
-  .projects-fields li > .technology,
-  .projects-list li > .language,
-  .projects-list li > .technology {
-    width: 150px;
-    min-width: 150px;
-    max-width: 150px;
-  }
-
-  .projects-fields li > .type,
-  .projects-fields li > .stat,
-  .projects-list li > .type,
-  .projects-list li > .stat {
-    width: 120px;
-    min-width: 120px;
-    max-width: 120px;
-  }
-
-  .projects-list li > .language,
-  .projects-list li > .technology,
-  .projects-list li > .type,
-  .projects-list li > .stat {
-    margin-top: 30px;
-    padding: 30px var(--max-spacing);
-    border-top: var(--border-style);
-    background-image: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0),
-      var(--bg-black)
-    );
-  }
-
-  .projects-list li > .stat {
-    border-top-right-radius: var(--min-border-radius);
-  }
-
-  .projects-fields li div h1 {
-    position: absolute;
-    top: 15px;
-    height: 30px;
-    width: 100%;
-    padding: var(--med-spacing) var(--max-spacing);
-    border-right: var(--border-style);
-    background-color: var(--bg-black);
-  }
-
-  .projects-list .name h1 {
-    align-items: center;
-    font-weight: 500;
-  }
-}
-
-@media screen and (min-width: 750px) {
-  .projects-fields li > .language,
-  .projects-fields li > .technology,
-  .projects-list li > .language,
-  .projects-list li > .technology {
-    width: 280px;
-    min-width: 280px;
-    max-width: 280px;
-  }
-
-  .projects-fields li > .type,
-  .projects-fields li > .stat,
-  .projects-list li > .type,
-  .projects-list li > .stat {
-    width: 220px;
-    min-width: 220px;
-    max-width: 220px;
-  }
 }
 
 /* --------------------------------------------------- */
@@ -528,7 +397,7 @@ main {
 
 .featured {
   height: 80%;
-  background-color: var(--bg-black);
+  background-color: var(--color-black);
 }
 
 .slider-container {
@@ -536,7 +405,7 @@ main {
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: var(--bg-black);
+  background-color: var(--color-black);
 }
 
 .slider {

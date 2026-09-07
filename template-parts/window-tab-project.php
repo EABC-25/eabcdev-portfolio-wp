@@ -23,33 +23,7 @@
   <section class="window-content first-column">
     <section>
       <section class="projects-table">
-        <ul class="projects-fields">
-          <li>
-            <div class="name">
-    
-            </div>
-          <div class="type">
-            <h1>
-              Type
-            </h1>
-          </div>
-          <div class="language">
-            <h1>
-              Languages
-            </h1>
-          </div>
-          <div class="technology">
-            <h1>
-              Technologies
-            </h1>
-          </div>
-          <div class="stat">
-            <h1>
-              Status
-            </h1>
-          </div>
-          </li>
-        </ul>
+        <div class="projects-filters"></div>
         <ul class="projects-list">
           <?php foreach ($projects as $project) : 
               $taxonomies = eabcdev_portfolio_get_project_taxonomies($project->ID);
@@ -60,50 +34,35 @@
               $status = $taxonomies['status'];
               $project_fl = mb_substr($project->post_title, 0, 1)
           ?>
-          <div class="relative">
             <li>
               <div class="name">
+                <div class="folder-top-layout">
+                  <div class="left"></div>
+                  <div class="right"></div>
+                </div>
                 <div class="project-list-header">
-                  <h2>
+                  <h1>
                     <?php echo esc_html($project->post_title); ?>
-                  </h2>
+                  </h1>
                 </div>
               </div>
-              <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
-                'class' => 'type',
-                'mobile-field' => 'Type',
-                'values' => $type,
-              ]); ?>
-              <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
-                'class' => 'language',
-                'mobile-field' => 'Languages',
-                'values' => $languages,
-              ]); ?>
-              <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
-                'class' => 'technology',
-                'mobile-field' => 'Technologies',
-                'values' => $technologies,
-              ]); ?>
-              <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
-                'class' => 'stat',
-                'mobile-field' => 'Status',
-                'values' => $status,
-              ]); ?>
+              <div class="folder-pane">
+                <div  class="project-taxonomies">
+                  <div class="carousel">
+                    <div class="chariot">
+                      <div class="chariot-sentinel"></div>
+                      <div class="charioteer">
+                        <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
+                        'class' => 'technology',
+                        'values' => $technologies,
+                        ]); ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </li>
-          </div> 
           <?php endforeach; ?>
-          <div class="project-last">
-            <li>
-              <div class="name">
-                <div class="project-list-header-closer">
-                </div>
-              </div>
-              <div class="type"></div>
-              <div class="language"></div>
-              <div class="technology"></div>
-              <div class="stat"></div>
-            </li> 
-          </div>
         </ul>
       </section>
     </section>

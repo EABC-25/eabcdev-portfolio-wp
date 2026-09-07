@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  // make all carousels run
+  runCarousel(windowEl);
+
   // Projects Column (at the very top, because for sure whenever there's windowEl - #first-column will also exist)
   const windowFirstColumn = windowEl.querySelector("#first-column");
 
@@ -15,13 +18,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   projectsList.addEventListener("click", el => {
+    console.log(el.target);
+    return;
     if (
       el.target.classList.contains("project-list-header") ||
       el.target.parentElement.classList.contains("project-list-header")
     ) {
       const listParent = el.target.closest("li");
       const listParentFullHeight = listParent.getBoundingClientRect().height;
-      // bro google ai taught me this lol
+      // google search's ai taught me this lol
       if (!listParent.parentElement.classList.contains("active")) {
         // Snap it right back to the closed state instantly so it can animate
         listParent.parentElement.style.height = "30px";
@@ -108,3 +113,155 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+function runCarousel(windowEl) {
+  const carousels = windowEl.querySelectorAll(".carousel");
+
+  for (const carousel of carousels) {
+    const chariot = carousel.querySelector(".chariot");
+    const charioteer = chariot?.querySelector(".charioteer");
+
+    if (!chariot || !charioteer) {
+      continue;
+    }
+
+    const carouselWidth = carousel.getBoundingClientRect().width;
+
+    const charioteerWidth = charioteer.getBoundingClientRect().width;
+
+    if (!carouselWidth || !charioteerWidth) {
+      continue;
+    }
+
+    const charioteerCount = Math.ceil(carouselWidth / charioteerWidth) + 1;
+
+    for (let i = 1; i < charioteerCount; i++) {
+      chariot.appendChild(charioteer.cloneNode(true));
+    }
+
+    setupCarousel(carousel);
+  }
+}
+
+function setupCarousel(carousel) {
+  const observer = new IntersectionObserver(
+    entries => {
+      for (const entry of entries) {
+        handleSentinel(entry, observer, carousel);
+      }
+    },
+    {
+      root: carousel,
+      threshold: 0,
+    },
+  );
+
+  const chariot = carousel.querySelector(".chariot");
+
+  setupChariot(carousel, chariot, observer);
+}
+
+function setupChariot(carousel, chariot, observer) {
+  const carouselWidth = carousel.getBoundingClientRect().width;
+
+  chariot.style.transition = "none";
+  chariot.style.transform = `translateX(${carouselWidth}px)`;
+
+  const sentinel = chariot.querySelector(".chariot-sentinel");
+
+  if (!sentinel) {
+    return;
+  }
+
+  observer.observe(sentinel);
+
+  requestAnimationFrame(() => {
+    animateChariot(carousel, chariot);
+  });
+}
+
+function animateChariot(carousel, chariot) {
+  const carouselRect = carousel.getBoundingClientRect();
+
+  const chariotRect = chariot.getBoundingClientRect();
+
+  const distance = chariotRect.right - carouselRect.left;
+
+  chariot.style.transition = "transform 100s linear";
+
+  chariot.style.transform = `translateX(-${distance}px)`;
+}
+
+function handleSentinel(entry, observer, carousel) {
+  const sentinel = entry.target;
+  const chariot = sentinel.parentElement;
+
+  if (!chariot) {
+    return;
+  }
+
+  const rootBounds = entry.rootBounds;
+  const sentinelRect = entry.boundingClientRect;
+
+  if (!rootBounds) {
+    return;
+  }
+
+  if (entry.isIntersecting && sentinelRect.left >= rootBounds.right - 1) {
+    createNextChariot(carousel, chariot, observer);
+  }
+
+  if (!entry.isIntersecting && sentinelRect.right <= rootBounds.left) {
+    removeChariot(chariot, observer);
+  }
+}
+
+function createNextChariot(carousel, previousChariot, observer) {
+  const previousRect = previousChariot.getBoundingClientRect();
+
+  const carouselRect = carousel.getBoundingClientRect();
+
+  const newChariot = previousChariot.cloneNode(true);
+
+  /*
+   * Append it to the carousel.
+   */
+  carousel.appendChild(newChariot);
+
+  /*
+   * Calculate where the new chariot's LEFT edge
+   * needs to be.
+   */
+  const newLeft = previousRect.right - carouselRect.left;
+
+  newChariot.style.transition = "none";
+
+  newChariot.style.transform = `translateX(${newLeft}px)`;
+
+  /*
+   * Watch the new chariot's sentinel
+   * with the SAME observer.
+   */
+  const sentinel = newChariot.querySelector(".chariot-sentinel");
+
+  if (sentinel) {
+    observer.observe(sentinel);
+  }
+
+  /*
+   * Start moving it.
+   */
+  requestAnimationFrame(() => {
+    animateChariot(carousel, newChariot);
+  });
+}
+
+function removeChariot(chariot, observer) {
+  const sentinel = chariot.querySelector(".chariot-sentinel");
+
+  if (sentinel) {
+    observer.unobserve(sentinel);
+  }
+
+  chariot.remove();
+}
