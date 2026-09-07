@@ -173,6 +173,8 @@ function setupChariot(carousel, chariot, observer) {
     return;
   }
 
+  sentinel.dataset.entered = "false";
+
   observer.observe(sentinel);
 
   requestAnimationFrame(() => {
@@ -200,18 +202,15 @@ function handleSentinel(entry, observer, carousel) {
     return;
   }
 
-  const rootBounds = entry.rootBounds;
-  const sentinelRect = entry.boundingClientRect;
-
-  if (!rootBounds) {
+  if (entry.isIntersecting) {
+    if (sentinel.dataset.entered === "false") {
+      sentinel.dataset.entered = "true";
+      createNextChariot(carousel, chariot, observer);
+    }
     return;
   }
 
-  if (entry.isIntersecting && sentinelRect.left >= rootBounds.right - 1) {
-    createNextChariot(carousel, chariot, observer);
-  }
-
-  if (!entry.isIntersecting && sentinelRect.right <= rootBounds.left) {
+  if (sentinel.dataset.entered === "true") {
     removeChariot(chariot, observer);
   }
 }
@@ -223,34 +222,22 @@ function createNextChariot(carousel, previousChariot, observer) {
 
   const newChariot = previousChariot.cloneNode(true);
 
-  /*
-   * Append it to the carousel.
-   */
   carousel.appendChild(newChariot);
 
-  /*
-   * Calculate where the new chariot's LEFT edge
-   * needs to be.
-   */
   const newLeft = previousRect.right - carouselRect.left;
 
   newChariot.style.transition = "none";
 
   newChariot.style.transform = `translateX(${newLeft}px)`;
 
-  /*
-   * Watch the new chariot's sentinel
-   * with the SAME observer.
-   */
   const sentinel = newChariot.querySelector(".chariot-sentinel");
 
-  if (sentinel) {
-    observer.observe(sentinel);
+  if (!sentinel) {
+    return;
   }
+  sentinel.dataset.entered = "false";
+  observer.observe(sentinel);
 
-  /*
-   * Start moving it.
-   */
   requestAnimationFrame(() => {
     animateChariot(carousel, newChariot);
   });
@@ -259,9 +246,9 @@ function createNextChariot(carousel, previousChariot, observer) {
 function removeChariot(chariot, observer) {
   const sentinel = chariot.querySelector(".chariot-sentinel");
 
-  if (sentinel) {
-    observer.unobserve(sentinel);
+  if (!sentinel) {
+    return;
   }
-
+  observer.unobserve(sentinel);
   chariot.remove();
 }
