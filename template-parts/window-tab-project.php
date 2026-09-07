@@ -48,17 +48,14 @@
               </div>
               <div class="folder-pane">
                 <div  class="project-taxonomies">
-                  <div class="carousel">
-                    <div class="chariot">
-                      <div class="chariot-sentinel"></div>
-                      <div class="charioteer">
-                        <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
-                        'class' => 'technology',
-                        'values' => $technologies,
-                        ]); ?>
-                      </div>
-                    </div>
-                  </div>
+                  <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
+                  'class' => 'type',
+                  'values' => $type,
+                  ]); ?>
+                  <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
+                  'class' => 'language',
+                  'values' => $languages,
+                  ]); ?>
                 </div>
               </div>
             </li>

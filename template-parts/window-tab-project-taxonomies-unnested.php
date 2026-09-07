@@ -15,8 +15,6 @@
       <h2>
         <?php echo esc_html($value->name)?>
       </h2>
-      <h2>Test</h2>
-      <h2>Test Test</h2>
     <?php endforeach; ?>
   <?php endif; ?>
 </div>

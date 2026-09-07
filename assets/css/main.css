@@ -352,37 +352,6 @@ main {
   padding-left: 10px;
 }
 
-/* CAROUSEL */
-.carousel {
-  position: relative;
-  width: 100%;
-  /* If we want to reuse this carousel, we need to make height dynamic or take input from a function or set with inline element style */
-  height: 30px;
-  overflow: hidden;
-}
-
-.chariot {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-}
-
-.charioteer {
-  display: flex;
-  flex-shrink: 0;
-}
-
-.chariot-sentinel {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 1px;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
 @media screen and (min-width: 480px) {
 }
 
