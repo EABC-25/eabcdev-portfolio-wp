@@ -28,6 +28,9 @@
           <?php foreach ($projects as $project) : 
               $taxonomies = eabcdev_portfolio_get_project_taxonomies($project->ID);
               
+              $project_link = get_permalink($project);
+              $excerpt = get_the_excerpt($project);
+
               $type = $taxonomies['type'];
               $languages = $taxonomies['languages'];
               $technologies = $taxonomies['technologies'];
@@ -35,26 +38,35 @@
               $project_fl = mb_substr($project->post_title, 0, 1)
           ?>
             <li>
-              <div class="name">
-                <div class="folder-top-layout">
-                  <div class="left"></div>
-                  <div class="right"></div>
-                </div>
-                <div class="project-list-header">
+              <div class="folder-top-layout">
+                <div class="left">
+                  <div class="project-name">
                   <h1>
                     <?php echo esc_html($project->post_title); ?>
                   </h1>
                 </div>
+                </div>
+                <div class="right"></div>
               </div>
               <div class="folder-pane">
+                <div class="project-info">
+                  <p class="project-excerpt">
+                    <?php echo esc_html($excerpt); ?>
+                  </p>
+                  <a class="project-link" href="<?php echo esc_url($project_link); ?>">Open Project >></a>
+                </div>
                 <div  class="project-taxonomies">
-                  <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
-                  'class' => 'type',
-                  'values' => $type,
-                  ]); ?>
                   <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
                   'class' => 'language',
                   'values' => $languages,
+                  ]); ?>
+                  <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
+                  'class' => 'technology',
+                  'values' => $technologies,
+                  ]); ?>
+                  <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
+                  'class' => 'type',
+                  'values' => $type,
                   ]); ?>
                 </div>
               </div>

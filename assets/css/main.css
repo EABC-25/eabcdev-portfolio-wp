@@ -273,7 +273,7 @@ main {
 } */
 
 .projects-filters {
-  min-height: 50px;
+  min-height: 10px;
   width: 100%;
   background-color: var(--color-shale);
 }
@@ -299,11 +299,21 @@ main {
 }
 
 .folder-top-layout .left {
-  height: 20px;
+  height: auto;
+  width: 100%;
+  min-width: 0;
   display: flex;
   background-color: var(--color-gray);
   border-top-right-radius: var(--min-border-radius);
   border-top: var(--border-style-white);
+  border-left: var(--border-style-gray);
+  border-right: var(--border-style-gray);
+  background-color: var(--color-shale);
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    var(--color-black)
+  );
 }
 
 .folder-top-layout .right {
@@ -314,42 +324,193 @@ main {
   border-top: var(--border-style-white);
 }
 
-.project-list-header {
-  height: 30px;
-  background-color: var(--color-shale);
-  border-left: var(--border-style-gray);
-  border-right: var(--border-style-gray);
-}
-
 .folder-pane {
   border-left: var(--border-style-gray);
   border-right: var(--border-style-gray);
   border-bottom: var(--border-style-gray);
 }
 
-.project-taxonomies {
-  display: flex;
-  flex-direction: column;
-  overflow-x: hidden;
+.project-name {
+  padding: var(--med-spacing) var(--max-spacing);
+  width: 100%;
+  display: block;
+}
+
+.project-name h1 {
+  width: 100%;
+  font-size: 14px;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.project-info {
+  padding: var(--ultra-max-spacing);
+}
+
+.project-link {
+  padding: var(--max-spacing);
+  margin-top: var(--max-spacing);
+  justify-self: end;
+  border-radius: var(--max-border-radius);
+  border-top: var(--border-style-white);
+  background-color: var(--color-shale);
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    var(--color-black)
+  );
 }
 
 .project-taxonomies {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  overflow-x: hidden;
   height: max-content;
-  padding: var(--med-spacing);
+  padding-top: var(--ultra-max-spacing);
+  background-color: var(--color-shale);
+  background-image: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0),
+    var(--color-black)
+  );
 }
 
 .project-taxonomies h2 {
   padding: var(--med-spacing) var(--max-spacing);
   background-color: var(--color-gray);
   border-radius: var(--max-border-radius);
+  border-top: var(--border-style-white);
   white-space: nowrap;
   text-wrap: nowrap;
+  font-size: var(--font-size-extrasmall);
 }
 
 .project-taxonomies .taxonomy {
+  width: 100%;
+  height: auto;
   display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap;
   gap: 10px;
-  padding-left: 10px;
+}
+
+.project-taxonomies .type {
+  grid-column: 2;
+  grid-row: 1;
+  justify-content: flex-end;
+  padding: 0px var(--ultra-max-spacing) var(--max-spacing) var(--max-spacing);
+}
+
+.project-taxonomies .language {
+  grid-column: 1;
+  grid-row: 1;
+  padding: 0px var(--max-spacing) var(--max-spacing) var(--ultra-max-spacing);
+}
+
+.project-taxonomies .technology {
+  grid-column: 1 / span 2;
+  padding: 0px var(--max-spacing) var(--ultra-max-spacing)
+    var(--ultra-max-spacing);
+}
+
+/* Project Taxonomies */
+
+.taxonomy > .javascript {
+  background-color: #f0db4f;
+  color: #323330;
+}
+
+.taxonomy > .php {
+  background-color: #8892be;
+  color: #4f5b93;
+}
+
+.taxonomy > .sql {
+  background-color: #0054a6;
+  color: #ffffff;
+}
+
+.taxonomy > .css {
+  background-color: #2965f1;
+  color: #ffffff;
+}
+
+.taxonomy > .html {
+  background-color: #e34c26;
+  color: #ffffff;
+}
+
+.taxonomy > .laravel {
+  background-color: #ff2d20;
+  color: #ffffff;
+}
+
+.taxonomy > .mysql {
+  background-color: #00758f;
+  color: #000000;
+}
+
+.taxonomy > .wordpress {
+  background-color: #00749c;
+  color: #444140;
+}
+
+.taxonomy > .typescript {
+  background-color: #3178c6;
+  color: #ffffff;
+}
+
+.taxonomy > .nodejs {
+  background-color: #3c873a;
+  color: #333333;
+}
+
+.taxonomy > .react {
+  background-color: #61dbfb;
+  color: #ffffff;
+}
+
+.taxonomy > .bash {
+  background-color: #293137;
+  color: #4eaa25;
+}
+
+.taxonomy > .c {
+  background-color: #00599c;
+  color: #ffffff;
+}
+
+.taxonomy > .csharp {
+  background-color: #9179e4;
+  color: #ffffff;
+}
+
+.taxonomy > .cpp {
+  background-color: #004482;
+  color: #ffffff;
+}
+
+.taxonomy > .go {
+  background-color: #ffffff;
+  color: #00add8;
+}
+
+.taxonomy > .java {
+  background-color: #007396;
+  color: #ed8b00;
+}
+
+.taxonomy > .python {
+  background-color: #3776ab;
+  color: #ffd43b;
+}
+
+.taxonomy > .shell {
+  background-color: #293137;
+  color: #4eaa25;
 }
 
 @media screen and (min-width: 480px) {

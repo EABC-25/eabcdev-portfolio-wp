@@ -56,6 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = windowThirdColumn.querySelector(".window-tab-header h1");
   const cards = windowThirdColumn.querySelectorAll(".card");
   let featured = windowThirdColumn.querySelector(".featured img");
+  // we might need to revisit this block. what if there's no featured? in case blank image_slug wasn't handled properly by the template
 
   if (!cards) {
     return;

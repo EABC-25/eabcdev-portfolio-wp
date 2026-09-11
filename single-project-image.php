@@ -8,11 +8,17 @@ $project_id = get_the_ID();
 $project_name_slug = get_query_var('name');
 $project_url = eabcdev_portfolio_get_project_url($project_id);
 
+$images = eabcdev_portfolio_get_project_images($project_id);
 $image_slug = isset($_GET['image']) 
-  ? sanitize_title(wp_unslash($_GET['image'])) : '';
+  ? sanitize_title(wp_unslash($_GET['image'])) 
+  : "";
+
+if (!$image_slug) {
+  $image_slug = $images[0]["slug"];
+}
+
 $image = $image_slug 
   ? eabcdev_portfolio_get_project_image($project_id, $image_slug) : null;
-$images = eabcdev_portfolio_get_project_images($project_id);
 
 get_header(); 
 ?>
@@ -33,7 +39,6 @@ get_header();
     <section class="window-content third-column">
       <section class="gallery">
         <div class="featured">
-          <!-- need to fix this, try loading ?images= and see how this line below exposes the error in the UI -->
           <?php echo wp_get_attachment_image($image['image_id'], 'large') ?>
         </div>
         <div class="slider-container">

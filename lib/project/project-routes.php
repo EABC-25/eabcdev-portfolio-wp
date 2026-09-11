@@ -57,6 +57,7 @@ function eabcdev_portfolio_project_image_template($template) {
   // /images/ AS !isset($_GET['image]) is ""
   // /images/?image= also gives ""
   // therefore "" should then immediately route to single-project-image.php wherein it should display the very first image in the gallery as default
+  // single-project-image.php will handle switch of blank image_slug to first image
   if ($image_slug === "") {
     $image_template = locate_template('single-project-image.php');
     if ($image_template) {
