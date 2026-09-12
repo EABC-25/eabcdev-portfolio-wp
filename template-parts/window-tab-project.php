@@ -53,7 +53,7 @@
                   <p class="project-excerpt">
                     <?php echo esc_html($excerpt); ?>
                   </p>
-                  <a class="project-link" href="<?php echo esc_url($project_link); ?>">Open Project >></a>
+                  <a class="project-link" href="<?php echo esc_url($project_link); ?>">...View Project</a>
                 </div>
                 <div  class="project-taxonomies">
                   <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
