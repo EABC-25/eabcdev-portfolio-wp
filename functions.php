@@ -5,7 +5,8 @@ if (!defined('ABSPATH')) {
 }
 
 require_once get_template_directory() . '/lib/project/project.php';
-require_once get_template_directory() . '/lib/project/project-meta.php';
+require_once get_template_directory() . '/lib/project/project-images-meta.php';
+require_once get_template_directory() . '/lib/project/project-extra-info-meta.php';
 require_once get_template_directory() . '/lib/project/project-routes.php';
 require_once get_template_directory() . '/lib/icons/icon.php';
 require_once get_template_directory() . '/lib/menu/primary_menu_walker.php';

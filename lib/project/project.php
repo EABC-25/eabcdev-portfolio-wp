@@ -226,3 +226,19 @@ function eabcdev_portfolio_get_project_url($project_id) {
     // use site's configured permalink structure rather than hardcoding '/' at the end
     return user_trailingslashit($url);
 }
+
+function eabcdev_portfolio_get_project_extra_info($project_id) {
+    $extra_info = get_post_meta(
+        $project_id,
+        'project_extra_info',
+        true
+    );
+
+    if (!$extra_info) {
+        return [];
+    }
+
+    $extra_info = json_decode($extra_info, true);
+
+    return is_array($extra_info) ? $extra_info : [];
+}

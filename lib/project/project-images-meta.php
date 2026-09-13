@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 /**
  * Register project meta: project_images
  */
-function eabcdev_portfolio_register_project_meta() {
+function eabcdev_portfolio_register_project_images_meta() {
   register_post_meta('project', 'project_images', [
     'type'=>'string',
     'single'=>true,
@@ -15,7 +15,7 @@ function eabcdev_portfolio_register_project_meta() {
   ]); 
 }
 
-add_action('init', 'eabcdev_portfolio_register_project_meta');
+add_action('init', 'eabcdev_portfolio_register_project_images_meta');
 
 /**
  * Add project_images metabox to wp-admin->project
