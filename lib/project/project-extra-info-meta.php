@@ -87,13 +87,23 @@ function eabcdev_portfolio_render_project_extra_info_metabox($post) {
     ?>
     <div id="eabcdev-project-extra-info">
         <div id="eabcdev-project-extra-info-list"></div>
-        <button
+        <div id="eabcdev-project-extra-info-input">
+            <p>
+                <label>
+                    Enter Extra Info:
+                    <input
+                    type="text"
+                    class="widefat"
+                    name="extraInfoInput"
+                    value=""
+                    >
+                 </label>
+            </p>
+            <button
             type="button"
-            class="button"
-            id="eabcdev-add-project-extra-info"
-        >
-            Add Project Extra Info
-        </button>
+            class="button eabcdev-save-project-extra-info"
+            >Save</button>
+        </div>
     </div>
     <?php
 }

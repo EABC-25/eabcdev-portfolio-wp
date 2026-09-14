@@ -126,7 +126,7 @@ function eabcdev_portfolio_project_images_admin_assets($hook) {
         },
         $project_images
     );
-
+    // global variables for js handler
     wp_localize_script(
         'eabcdev-project-images',
         'eabcdevProjectImages',
