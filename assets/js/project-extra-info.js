@@ -2,7 +2,6 @@
  * Event listener to project_extra_info meta box
  */
 document.addEventListener("DOMContentLoaded", () => {
-  let extraInfoIndex = 1;
   const input = document.querySelector("#eabcdev-project-extra-info-input");
   const list = document.querySelector("#eabcdev-project-extra-info-list");
 
@@ -38,31 +37,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     container.remove();
-    extraInfoIndex = 1;
 
     const extraInfos = list.querySelectorAll(".eabcdev-project-extra-info");
 
-    extraInfos.forEach(el => {
-      console.log(el);
-      el.querySelector("span").innerText = extraInfoIndex;
-      extraInfoIndex++;
+    extraInfos.forEach((el, index) => {
+      const n = index + 1;
+      el.querySelector("span").innerText = n;
+      el.querySelector("input").name = `project_extra_info[${n}]`;
     });
   });
 
   function addToList(text) {
+    if (text === "") {
+      return;
+    }
+
+    const index = list.children.length + 1;
     const container = document.createElement("div");
     container.className = "eabcdev-project-extra-info";
     container.innerHTML = `
       <p>
         <label>
           <span>
-            ${extraInfoIndex}
+            ${index}
           </span>
           <input
             type="text"
             class="widefat"
-            name="project_extra_info[${extraInfoIndex}]"
-            value="${text || ""}"
+            name="project_extra_info[${index}]"
+            value="${text}"
           >
         </label>
       </p>
@@ -72,7 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
       >Delete</button>
     `;
 
-    extraInfoIndex++;
     list.appendChild(container);
   }
 

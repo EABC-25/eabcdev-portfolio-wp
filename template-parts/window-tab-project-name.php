@@ -8,6 +8,7 @@
   $project_name_slug = $args['project-name-slug'];
   $images = $args['images'];
   $colored = $args['colored'];
+  $extra_info = eabcdev_portfolio_get_project_extra_info($project_id);
 ?>
 <section 
   class="window-tab <?php echo $colored ? "colored" : "" ?>" 
@@ -18,6 +19,7 @@
   </div>
 
   <section class="window-content second-column">
+    <?php echo var_dump($extra_info) ?>
     <?php if ($images && $images !== 'NO DISPLAY') : ?>
       <h1>Project Images:</h1>
       <?php foreach ($images as $image) : ?>

@@ -56,7 +56,7 @@ function eabcdev_portfolio_sanitize_project_extra_info($value) {
 
       $text = sanitize_text_field($text);
 
-      if($text = '') {
+      if($text === '') {
         continue;
       }
 
@@ -184,6 +184,8 @@ function eabcdev_portfolio_save_project_extra_info($post_id) {
     }
 
     $submitted_extra_info = $_POST['project_extra_info'];
+
+    error_log(print_r($submitted_extra_info, true));
 
     $clean_extra_info = [];
 
