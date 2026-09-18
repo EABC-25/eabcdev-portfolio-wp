@@ -35,7 +35,6 @@
               $languages = $taxonomies['languages'];
               $technologies = $taxonomies['technologies'];
               $status = $taxonomies['status'];
-              $project_fl = mb_substr($project->post_title, 0, 1)
           ?>
             <li>
               <div class="folder-top-layout">
@@ -55,7 +54,7 @@
                   </p>
                   <a class="project-link" href="<?php echo esc_url($project_link); ?>">...View Project</a>
                 </div>
-                <div  class="project-taxonomies">
+                <div class="project-taxonomies">
                   <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
                   'class' => 'language',
                   'values' => $languages,

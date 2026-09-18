@@ -399,6 +399,10 @@ main {
     var(--ultra-max-spacing);
 }
 
+.project-name-taxonomies .taxonomy {
+  display: flex;
+}
+
 /* Project Taxonomies */
 
 .taxonomy > .javascript {

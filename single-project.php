@@ -3,7 +3,6 @@
     exit;
   }
 
-  $project_name_slug = get_query_var('name');
   $project_id = get_the_ID();
   $images = eabcdev_portfolio_get_project_images($project_id);
 ?>
@@ -21,7 +20,6 @@
   ]); ?>
   <?php get_template_part('template-parts/window-tab', 'project-name', [
     'project-id' => $project_id,
-    'project-name-slug' => $project_name_slug,
     'images' => $images,
     'colored' => true,
   ]); ?>
