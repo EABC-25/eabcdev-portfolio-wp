@@ -319,13 +319,13 @@ main {
   border-bottom: var(--border-style-gray);
 }
 
-.project-name {
+.project-title {
   padding: var(--med-spacing) var(--max-spacing);
   width: 100%;
   display: block;
 }
 
-.project-name h1 {
+.project-title h1 {
   width: 100%;
   font-size: 14px;
   display: inline-block;
@@ -397,10 +397,6 @@ main {
   grid-column: 1 / span 2;
   padding: 0px var(--max-spacing) var(--ultra-max-spacing)
     var(--ultra-max-spacing);
-}
-
-.project-name-taxonomies .taxonomy {
-  display: flex;
 }
 
 /* Project Taxonomies */
@@ -511,6 +507,20 @@ main {
     min-width: 480px;
     max-width: 480px;
   }
+}
+
+/* --------------------------------------------------- */
+/* ----------------- Project Name ------------------- */
+/* --------------------------------------------------- */
+
+.project-name-name {
+  padding: var(--med-spacing) var(--max-spacing);
+  width: 100%;
+  display: block;
+}
+
+.project-name-taxonomies .taxonomy {
+  display: flex;
 }
 
 /* --------------------------------------------------- */

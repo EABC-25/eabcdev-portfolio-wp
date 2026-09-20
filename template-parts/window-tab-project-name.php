@@ -29,64 +29,68 @@
 
   <section class="window-content second-column">
     <section>
-      <?php echo $project_featured_image ?>
-      <h1><?php echo esc_html($project_title); ?></h1>
-      <p>
-        <?php echo esc_html(wp_strip_all_tags($project_content)); ?>
-      </p>
-      <div class="project-name-taxonomies">
-        <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
-        'class' => 'language',
-        'values' => $languages,
-        ]); ?>
-        <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
-        'class' => 'technology',
-        'values' => $technologies,
-        ]); ?>
-        <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
-        'class' => 'type',
-        'values' => $type,
-        ]); ?>
-        <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
-        'class' => 'status',
-        'values' => $status,
-        ]); ?>
-      </div>
-      <div>
+      <section class="project-name-project">
+        <?php echo $project_featured_image ?>
+        <h1><?php echo esc_html($project_title); ?></h1>
         <p>
-          <a 
-            href="<?php echo esc_url($github_link); ?>" 
-            target="_blank"
-            rel="noopener noreferrer">
+          <?php echo esc_html(wp_strip_all_tags($project_content)); ?>
+        </p>
+        <div class="project-name-taxonomies">
+          <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
+          'class' => 'language',
+          'values' => $languages,
+          ]); ?>
+          <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
+          'class' => 'technology',
+          'values' => $technologies,
+          ]); ?>
+          <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
+          'class' => 'type',
+          'values' => $type,
+          ]); ?>
+          <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
+          'class' => 'status',
+          'values' => $status,
+          ]); ?>
+        </div>
+        <div class="project-name-links">
+          <p>
+            <a 
+              href="<?php echo esc_url($github_link); ?>" 
+              target="_blank"
+              rel="noopener noreferrer">
               Github Link
-          </a>
-        </p>
-        <p>
-          <a 
-            href="<?php echo esc_url($demo_link); ?>" 
-            target="_blank"
-            rel="noopener noreferrer">
+            </a>
+          </p>
+          <p>
+            <a 
+              href="<?php echo esc_url($demo_link); ?>" 
+              target="_blank"
+              rel="noopener noreferrer">
               Demo Link
-          </a>
-        </p>
-      </div>
-      <?php if ($images && $images !== 'NO DISPLAY') : ?>
-        <h1>Project Images:</h1>
-        <?php foreach ($images as $image) : ?>
-          <?php 
-            $image_url = eabcdev_portfolio_get_project_image_url($project_id, $image['slug']);  
-          ?>
-          <a href="<?php echo esc_url($image_url); ?>">
-            <?php 
-              echo wp_get_attachment_image($image['image_id'], 'medium')
-            ?>
-          </a>
-        <?php endforeach; ?>
-      <?php elseif ($images === 'NO DISPLAY') :?>
-        <p>Please go to images tab -------></p>
-      <?php else :?>
-        <p>This project does not have images.</p>
-      <?php endif; ?>
+            </a>
+          </p>
+        </div>
+        <div class="project-name-images">
+          <?php if ($images && $images !== 'NO DISPLAY') : ?>
+            <h1>Project Images:</h1>
+            <?php foreach ($images as $image) : ?>
+              <?php 
+                $image_url = eabcdev_portfolio_get_project_image_url($project_id, $image['slug']);  
+              ?>
+              <a href="<?php echo esc_url($image_url); ?>">
+                <?php 
+                  echo wp_get_attachment_image($image['image_id'], 'medium')
+                ?>
+              </a>
+            <?php endforeach; ?>
+          <?php elseif ($images === 'NO DISPLAY') :?>
+            <p>Please go to images tab -------></p>
+          <?php else :?>
+            <p>This project does not have images.</p>
+          <?php endif; ?>
+        </div>
+      </section>
     </section>
   </section>
 </section>

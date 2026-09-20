@@ -39,7 +39,7 @@
             <li>
               <div class="folder-top-layout">
                 <div class="left">
-                  <div class="project-name">
+                  <div class="project-title">
                   <h1>
                     <?php echo esc_html($project->post_title); ?>
                   </h1>
