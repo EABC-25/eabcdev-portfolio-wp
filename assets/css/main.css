@@ -500,7 +500,7 @@ main {
   color: #4eaa25;
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 480px) {
   .projects-list {
     flex-direction: row;
     flex-wrap: wrap;
@@ -508,8 +508,8 @@ main {
   }
 
   .projects-list li {
-    min-width: 500px;
-    max-width: 500px;
+    min-width: 480px;
+    max-width: 480px;
   }
 }
 

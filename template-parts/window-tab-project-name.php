@@ -16,6 +16,8 @@
   $languages = $project_taxonomies['languages'];
   $technologies = $project_taxonomies['technologies'];
   $status = $project_taxonomies['status'];
+  $github_link = get_post_meta($project_id, 'project_github_link', true);
+  $demo_link = get_post_meta($project_id, 'project_demo_link', true);
 ?>
 <section 
   class="window-tab <?php echo $colored ? "colored" : "" ?>" 
@@ -27,6 +29,7 @@
 
   <section class="window-content second-column">
     <section>
+      <?php echo $project_featured_image ?>
       <h1><?php echo esc_html($project_title); ?></h1>
       <p>
         <?php echo esc_html(wp_strip_all_tags($project_content)); ?>
@@ -49,7 +52,24 @@
         'values' => $status,
         ]); ?>
       </div>
-      <?php echo $project_featured_image ?>
+      <div>
+        <p>
+          <a 
+            href="<?php echo esc_url($github_link); ?>" 
+            target="_blank"
+            rel="noopener noreferrer">
+              Github Link
+          </a>
+        </p>
+        <p>
+          <a 
+            href="<?php echo esc_url($demo_link); ?>" 
+            target="_blank"
+            rel="noopener noreferrer">
+              Demo Link
+          </a>
+        </p>
+      </div>
       <?php if ($images && $images !== 'NO DISPLAY') : ?>
         <h1>Project Images:</h1>
         <?php foreach ($images as $image) : ?>
