@@ -40,10 +40,10 @@
               <div class="folder-top-layout">
                 <div class="left">
                   <div class="project-title">
-                  <h1>
-                    <?php echo esc_html($project->post_title); ?>
-                  </h1>
-                </div>
+                    <h1>
+                      <?php echo esc_html($project->post_title); ?>
+                    </h1>
+                  </div>
                 </div>
                 <div class="right"></div>
               </div>

@@ -9,7 +9,8 @@
   $colored = $args['colored'];
   $project_title = get_the_title($project_id);
   $project_content = get_the_content($project_id);
-  $project_featured_image = get_the_post_thumbnail( $project_id, 'medium' );
+  $project_featured_image_url = get_the_post_thumbnail_url($project_id);
+  $project_featured_image = get_the_post_thumbnail($project_id, "medium");
   $project_taxonomies = eabcdev_portfolio_get_project_taxonomies($project_id);
   $project_extra_info = eabcdev_portfolio_get_project_extra_info($project_id);
   $type = $project_taxonomies['type'];
@@ -29,12 +30,27 @@
 
   <section class="window-content second-column">
     <section>
-      <section class="project-name-project">
-        <?php echo $project_featured_image ?>
-        <h1><?php echo esc_html($project_title); ?></h1>
-        <p>
-          <?php echo esc_html(wp_strip_all_tags($project_content)); ?>
-        </p>
+      <section class="project-name">
+        <div class="project-name-featured-image" >
+          <?php echo $project_featured_image; ?>
+        </div>
+        <div class="project-name-title">
+          <h1>
+            <?php echo esc_html($project_title); ?>
+          </h1>
+        </div>
+        <div class="project-name-content">
+          <p>
+            <?php echo esc_html(wp_strip_all_tags($project_content)); ?>
+          </p>
+        </div>
+        <div class="project-name-extra-info">
+          <ul>
+            <?php foreach($project_extra_info as $info) : ?>
+              <li><?php echo esc_html($info); ?></li>
+            <?php endforeach; ?>
+          </ul>
+        </div>
         <div class="project-name-taxonomies">
           <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
           'class' => 'language',
@@ -71,21 +87,29 @@
             </a>
           </p>
         </div>
+        <div class="project-name-images-heading">
+          <h1>
+            <?php 
+              if ($images === 'NO DISPLAY') {
+                echo 'Project Images in next tab ----->';
+              } else {
+                echo 'Project Images:';
+              }
+            ?>
+          </h1>
+        </div>
         <div class="project-name-images">
           <?php if ($images && $images !== 'NO DISPLAY') : ?>
-            <h1>Project Images:</h1>
             <?php foreach ($images as $image) : ?>
               <?php 
                 $image_url = eabcdev_portfolio_get_project_image_url($project_id, $image['slug']);  
               ?>
-              <a href="<?php echo esc_url($image_url); ?>">
-                <?php 
-                  echo wp_get_attachment_image($image['image_id'], 'medium')
-                ?>
-              </a>
+              <div class="project-name-image">
+                <a href="<?php echo esc_url($image_url); ?>">
+                  <?php echo wp_get_attachment_image($image['image_id'], 'medium')?>
+                </a>
+              </div>   
             <?php endforeach; ?>
-          <?php elseif ($images === 'NO DISPLAY') :?>
-            <p>Please go to images tab -------></p>
           <?php else :?>
             <p>This project does not have images.</p>
           <?php endif; ?>
