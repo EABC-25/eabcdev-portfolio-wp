@@ -31,26 +31,22 @@
   <section class="window-content second-column">
     <section>
       <section class="project-name">
-        <div class="project-name-featured-image" >
-          <?php echo $project_featured_image; ?>
-        </div>
-        <div class="project-name-title">
-          <h1>
+        <section class="project-name-main">
+          <div class="project-name-featured-image" >
+            <?php echo $project_featured_image; ?>
+          </div>
+          <h1 class="project-name-title">
             <?php echo esc_html($project_title); ?>
           </h1>
-        </div>
-        <div class="project-name-content">
-          <p>
+          <p class="project-name-content">
             <?php echo esc_html(wp_strip_all_tags($project_content)); ?>
           </p>
-        </div>
-        <div class="project-name-extra-info">
-          <ul>
+          <ul class="project-name-extra-info">
             <?php foreach($project_extra_info as $info) : ?>
               <li><?php echo esc_html($info); ?></li>
             <?php endforeach; ?>
           </ul>
-        </div>
+        </section>
         <div class="project-name-taxonomies">
           <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
           'class' => 'language',

@@ -370,37 +370,43 @@ main {
   min-width: 250px;
   max-width: 1200px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 0px minmax(250px, 1fr);
-  grid-auto-rows: auto;
 }
 
 .project-name > div {
-  grid-column: 2;
   display: flex;
-  width: 100%;
   flex-wrap: wrap;
   padding: var(--max-spacing) 0;
 }
 
 .project-name-featured-image {
   max-height: 300px;
+  display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: var(--max-spacing);
+}
+
+.project-name-title {
+  justify-content: center;
+}
+
+.project-name-title,
+.project-name-content,
+.project-name-extra-info {
+  margin-bottom: var(--max-spacing);
+}
+
+.project-name-content,
+.project-name-extra-info {
+  display: block;
 }
 
 .project-name-featured-image img {
   height: 100%;
-  width: 100%;
   object-fit: contain;
 }
 
-.project-name-title {
-  align-items: center;
-  justify-content: center;
-}
-
-.project-name-title > h1,
+.project-name-title,
 .project-name-images-heading > h1 {
   font-size: var(--font-size-medium);
 }
@@ -444,43 +450,30 @@ main {
   opacity: 0.7;
 }
 
-.project-name-extra-info ul {
-  flex-direction: column;
-  padding-left: var(--max-spacing);
+.project-name-extra-info {
+  padding-left: var(--ultra-max-spacing);
+  padding-right: var(--ultra-max-spacing);
 }
 
-.project-name-extra-info ul li {
+.project-name-extra-info li {
   display: list-item;
   list-style-type: disc;
 }
 
-@media screen and (min-width: 1000px) {
-  .project-name {
-    grid-template-columns: auto minmax(250px, 1fr);
+@media screen and (min-width: 800px) {
+  .project-name-featured-image {
+    float: left;
+    margin-right: var(--max-spacing);
   }
 
-  .project-name > .project-name-title {
+  .project-name-main::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .project-name-title {
     justify-content: flex-start;
-  }
-
-  .project-name > .project-name-title,
-  .project-name > .project-name-content,
-  .project-name > .project-name-extra-info {
-    grid-column: 2;
-  }
-
-  .project-name > .project-name-featured-image {
-    grid-column: 1;
-    grid-row: 1 / span 3;
-    padding-right: var(--ultra-max-spacing);
-    padding-bottom: var(--ultra-max-spacing);
-  }
-
-  .project-name > .project-name-taxonomies,
-  .project-name > .project-name-links,
-  .project-name > .project-name-images-heading,
-  .project-name > .project-name-images {
-    grid-column: 1 / span 2;
   }
 }
 
