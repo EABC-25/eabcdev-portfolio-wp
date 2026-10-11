@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 ?>
 
 <?php get_header(); ?>
-<article class="window">
+<section class="window">
     <?php get_template_part('template-parts/window-tab', 'project', [
         'colored' => true
     ]); ?>       
@@ -14,6 +14,6 @@ if (!defined('ABSPATH')) {
     </section>
     <section class="window-tab">
     </section>
-</article>
+</section>
 
 <?php get_footer(); ?>
