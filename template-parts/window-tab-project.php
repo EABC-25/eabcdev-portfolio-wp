@@ -26,8 +26,10 @@
         <div class="projects-filters"></div>
         <ul class="projects-list">
           <?php foreach ($projects as $project) : 
-              $taxonomies = eabcdev_portfolio_get_project_taxonomies($project->ID);
+              $project_id = $project->ID;
+              $taxonomies = eabcdev_portfolio_get_project_taxonomies($project_id);
               
+              $project_featured_image_url = get_the_post_thumbnail_url($project_id);
               $project_link = get_permalink($project);
               $excerpt = get_the_excerpt($project);
 
@@ -48,11 +50,21 @@
                 <div class="right"></div>
               </div>
               <div class="folder-pane">
-                <div class="project-info">
+                <div 
+                  class="project-info" 
+                  style="
+                    background-image: 
+                      linear-gradient(rgba(46,46,46,0.7), rgba(46,46,46,0.7)),
+                      url('<?php echo esc_url($project_featured_image_url); ?>');
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    "
+                  >
                   <p class="project-excerpt">
                     <?php echo esc_html($excerpt); ?>
                   </p>
-                  <a class="project-link" href="<?php echo esc_url($project_link); ?>">...View Project</a>
+                  <a class="project-link" href="<?php echo esc_url($project_link); ?>">...View More</a>
                 </div>
                 <div class="project-taxonomies">
                   <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
