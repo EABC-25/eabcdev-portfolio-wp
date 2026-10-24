@@ -39,7 +39,8 @@
               $status = $taxonomies['status'];
           ?>
             <li>
-              <div class="folder-top-layout">
+              <div class="project-folder-top-layout-container">
+                <div class="folder-top-layout">
                 <div class="left">
                   <div class="project-title">
                     <h1>
@@ -48,6 +49,7 @@
                   </div>
                 </div>
                 <div class="right"></div>
+              </div>
               </div>
               <div class="folder-pane">
                 <div 

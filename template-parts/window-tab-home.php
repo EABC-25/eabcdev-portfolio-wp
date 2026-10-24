@@ -3,7 +3,29 @@
     exit;
   }
   $colored = $args['colored'];
-  $hero = get_theme_file_uri('assets/images/hero.png')
+  $hero = get_theme_file_uri('assets/images/hero.png');
+  $latest_projects = get_posts([
+    'post_type'=>'project',
+    'post_status'=>'publish',
+    'posts_per_page'=> 3,
+    'fields'=>'ids',
+    'orderby'=>'menu_order',
+    'order'=>'ASC',
+  ]);
+
+  $latest_projects = array_map(function ($project_id) {
+    return [
+      'id'=>$project_id,
+      'featured_image'=>get_the_post_thumbnail_url($project_id, 'medium'),
+      'title'=>get_the_title($project_id),
+      'permalink'=>get_permalink($project_id),
+      'languages'=>wp_get_post_terms(
+        $project_id,
+        'project_language',
+        ['fields'=>'all']
+      ),
+    ];
+  }, $latest_projects)
 ?>
 <section 
   class="window-tab <?php echo $colored ? "colored" : "" ?>" 
@@ -29,10 +51,80 @@
           </div>
         </section> 
         <section class="eabcdev-home-latest"> 
-          <div class="eabcdev-home-latest-list">
-            
+          <div class="eabcdev-home-latest-container">
+            <div class="eabcdev-home-latest-slider-frame">
+              <div class="slider-container">
+                <div class="slider eabcdev-home-latest-list-slider">
+                <ul>
+                  <?php if (! empty($latest_projects)) : ?>
+                    <?php foreach ($latest_projects as $project) : ?>
+                      <?php  ?>
+                    <?php endforeach; ?>
+                  <?php else: ?>
+                  <?php endif; ?>
+                  <li>
+                    <div class="eabcdev-home-folder-top-container">
+                      <div class="folder-top-layout">
+                        <div class="left">
+                          <div class="project-title">
+                            <h1>
+                              test
+                            </h1>
+                          </div>
+                        </div>
+                        <div class="right"></div>
+                      </div>
+                    </div>           
+                    <div class="folder-pane eabcdev-home-folder-pane">
+                      <div>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex alias voluptatum, nulla nisi id asperiores illum eius nostrum debitis ut dolorum consectetur aliquam rerum nam libero. Tempore adipisci ex molestiae, facere aut nisi quia doloremque quibusdam nulla ipsum inventore sequi, eaque eius, facilis velit cumque minus possimus labore ducimus deleniti.
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="eabcdev-home-folder-top-container">
+                      <div class="folder-top-layout">
+                        <div class="left">
+                          <div class="project-title">
+                            <h1>
+                              test
+                            </h1>
+                          </div>
+                        </div>
+                        <div class="right"></div>
+                      </div>
+                    </div>           
+                    <div class="folder-pane eabcdev-home-folder-pane">
+                      <div>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex alias voluptatum, nulla nisi id asperiores illum eius nostrum debitis ut dolorum consectetur aliquam rerum nam libero. Tempore adipisci ex molestiae, facere aut nisi quia doloremque quibusdam nulla ipsum inventore sequi, eaque eius, facilis velit cumque minus possimus labore ducimus deleniti.
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="eabcdev-home-folder-top-container">
+                      <div class="folder-top-layout">
+                        <div class="left">
+                          <div class="project-title">
+                            <h1>
+                              test
+                            </h1>
+                          </div>
+                        </div>
+                        <div class="right"></div>
+                      </div>
+                    </div>           
+                    <div class="folder-pane eabcdev-home-folder-pane">
+                      <div>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex alias voluptatum, nulla nisi id asperiores illum eius nostrum debitis ut dolorum consectetur aliquam rerum nam libero. Tempore adipisci ex molestiae, facere aut nisi quia doloremque quibusdam nulla ipsum inventore sequi, eaque eius, facilis velit cumque minus possimus labore ducimus deleniti.
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                </div>
+              </div>
+            </div>          
+            <h1 class="eabcdev-home-latest-tag">Latest projects:</h1>
           </div>
-          <h1 class="eabcdev-home-latest-tag">Latest projects:</h1>
         </section>
       </section>
     </section>

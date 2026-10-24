@@ -41,26 +41,30 @@ get_header();
         <div class="featured">
           <?php echo wp_get_attachment_image($image['image_id'], 'large') ?>
         </div>
-        <div class="slider-container">
-          <div class="slider">
-            <?php if ($images) : ?>
-              <?php foreach ($images as $image_single) : ?>
-                <?php 
-                  $thumbnail = wp_get_attachment_image($image_single['image_id'], 'small');
+        <div class="gallery-slider-frame">
+          <div class="slider-container">
+            <div class="slider">
+            <ul class="gallery-list">
+              <?php if ($images) : ?>
+                <?php foreach ($images as $image_single) : ?>
+                  <?php 
+                    $thumbnail = wp_get_attachment_image($image_single['image_id'], 'small');
 
-                  $large_image = wp_get_attachment_image_url($image_single['image_id'], 'large');
-                ?>
-                <div 
-                  class="<?php echo $image_slug === $image_single['slug'] ? 'card full-opacity': 'card' ?>"
-                  data-image-slug="<?php echo esc_attr($image_single['slug']); ?>"
-                  data-large-image="<?php echo esc_url($large_image); ?>"            
-                >
-                  <?php echo $thumbnail; ?>
-                </div>
-              <?php endforeach; ?>
-            <?php endif; ?>
+                    $large_image = wp_get_attachment_image_url($image_single['image_id'], 'large');
+                  ?>
+                  <li 
+                    class="<?php echo $image_slug === $image_single['slug'] ? 'card full-opacity': 'card' ?>"
+                    data-image-slug="<?php echo esc_attr($image_single['slug']); ?>"
+                    data-large-image="<?php echo esc_url($large_image); ?>"            
+                  >
+                    <?php echo $thumbnail; ?>
+                  </li>
+                <?php endforeach; ?>
+              <?php endif; ?>
+            </ul>    
+            </div>
           </div>
-        </div>
+        </div>   
       </section>
     </section>
   </section>
