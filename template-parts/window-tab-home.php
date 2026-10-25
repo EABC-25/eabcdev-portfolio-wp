@@ -52,10 +52,13 @@
         </section> 
         <section class="eabcdev-home-latest"> 
           <div class="eabcdev-home-latest-container">
+            <div class="eabcdev-home-latest-slider-btns">
+              <button class="slider-btn-left" type="button"><</button>
+              <button class="slider-btn-right" type="button">></button>
+            </div>
             <div class="eabcdev-home-latest-slider-frame">
               <div class="slider-container">
-                <div class="slider eabcdev-home-latest-list-slider">
-                <ul>
+                <ul class="slider-switch eabcdev-home-latest-list-slider">
                   <?php if (! empty($latest_projects)) : ?>
                     <?php foreach ($latest_projects as $project) : ?>
                       <?php  ?>
@@ -68,7 +71,7 @@
                         <div class="left">
                           <div class="project-title">
                             <h1>
-                              test
+                              test 1
                             </h1>
                           </div>
                         </div>
@@ -87,7 +90,7 @@
                         <div class="left">
                           <div class="project-title">
                             <h1>
-                              test
+                              test 2
                             </h1>
                           </div>
                         </div>
@@ -106,7 +109,7 @@
                         <div class="left">
                           <div class="project-title">
                             <h1>
-                              test
+                              test 3
                             </h1>
                           </div>
                         </div>
@@ -120,10 +123,8 @@
                     </div>
                   </li>
                 </ul>
-                </div>
               </div>
             </div>          
-            <h1 class="eabcdev-home-latest-tag">Latest projects:</h1>
           </div>
         </section>
       </section>

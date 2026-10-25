@@ -12,6 +12,37 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  // On Home Path
+  if (window.location.pathname === "/") {
+    // Home Latest Projects Slider
+    const homeLatestSlider = windowEl.querySelector(
+      ".eabcdev-home-latest-list-slider",
+    );
+    const homeLatestSliderBtns = windowEl.querySelector(
+      ".eabcdev-home-latest-slider-btns",
+    );
+
+    if (!homeLatestSlider || !homeLatestSliderBtns) {
+      return;
+    }
+
+    let slideCounter = 0;
+
+    homeLatestSliderBtns.addEventListener("click", el => {
+      if (el.target.classList.contains("slider-btn-left")) {
+        slideCounter = Math.max(slideCounter - 1, 0);
+      } else if (el.target.classList.contains("slider-btn-right")) {
+        slideCounter = Math.min(slideCounter + 1, 2);
+      }
+      const newCoords = slideCounter * 100;
+      homeLatestSlider.style.transform = `translateX(-${newCoords}%)`;
+    });
+
+    // we return now because we don't need to compile the next lines of code if we are at Root/Home Path
+    return;
+  }
+
+  // Project Columns Switcher
   const windowHeaders = document.querySelectorAll(".window-tab-header");
   // exit if there's only 1 .window-tab-header div
   // I can also remove cursor pointer css for the single .window-tab-header div since we are not going to be implementing click fnctionality - but maybe for now that's gonna be a future to do

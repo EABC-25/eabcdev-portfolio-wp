@@ -43,7 +43,7 @@ get_header();
         </div>
         <div class="gallery-slider-frame">
           <div class="slider-container">
-            <div class="slider">
+            <div class="slider-scroll">
             <ul class="gallery-list">
               <?php if ($images) : ?>
                 <?php foreach ($images as $image_single) : ?>
