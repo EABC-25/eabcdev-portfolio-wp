@@ -58,7 +58,7 @@
             </div>
             <div class="eabcdev-home-latest-slider-frame">
               <div class="slider-container">
-                <ul class="slider-switch eabcdev-home-latest-list-slider">
+                <ul class="slider-switch eabcdev-home-latest-list">
                   <?php if (! empty($latest_projects)) : ?>
                     <?php foreach ($latest_projects as $project) : ?>
                       <?php  ?>
@@ -71,7 +71,7 @@
                         <div class="left">
                           <div class="project-title">
                             <h1>
-                              test 1
+                              teeeeeeeeeeeeeeeeeeeeeeeeeeeest 1
                             </h1>
                           </div>
                         </div>

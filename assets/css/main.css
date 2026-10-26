@@ -418,12 +418,12 @@ main {
   overflow-y: hidden;
 }
 
-.eabcdev-home-latest-list-slider {
+.eabcdev-home-latest-list {
   position: absolute;
   transition: transform 0.5s ease;
 }
 
-.eabcdev-home-latest-list-slider li {
+.eabcdev-home-latest-list li {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
@@ -479,6 +479,19 @@ main {
 .eabcdev-home-latest-slider-btns .slider-btn-left:active,
 .eabcdev-home-latest-slider-btns .slider-btn-right:active {
   background-color: var(--color-aqua);
+}
+
+@media screen and (min-width: 1200px) {
+  .eabcdev-home-latest-list {
+    transform: translateX(0);
+  }
+  .eabcdev-home-latest-list li {
+    flex-shrink: 1;
+  }
+  .eabcdev-home-latest-slider-btns .slider-btn-left,
+  .eabcdev-home-latest-slider-btns .slider-btn-right {
+    display: none;
+  }
 }
 
 /* --------------------------------------------------- */

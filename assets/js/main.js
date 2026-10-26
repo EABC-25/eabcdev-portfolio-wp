@@ -15,18 +15,26 @@ document.addEventListener("DOMContentLoaded", () => {
   // On Home Path
   if (window.location.pathname === "/") {
     // Home Latest Projects Slider
-    const homeLatestSlider = windowEl.querySelector(
-      ".eabcdev-home-latest-list-slider",
-    );
+    const homeLatestList = windowEl.querySelector(".eabcdev-home-latest-list");
     const homeLatestSliderBtns = windowEl.querySelector(
       ".eabcdev-home-latest-slider-btns",
     );
 
-    if (!homeLatestSlider || !homeLatestSliderBtns) {
+    if (!homeLatestList || !homeLatestSliderBtns) {
       return;
     }
 
     let slideCounter = 0;
+
+    const mediaQuery = window.matchMedia("(min-width: 1200px)");
+
+    mediaQuery.addEventListener("change", e => {
+      // this is so that the homeLatestList when at -100% or -200% will rebound back to 0 on large screens
+      if (e.matches) {
+        slideCounter = 0;
+        homeLatestList.style.transform = "translateX(0)";
+      }
+    });
 
     homeLatestSliderBtns.addEventListener("click", el => {
       if (el.target.classList.contains("slider-btn-left")) {
@@ -35,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         slideCounter = Math.min(slideCounter + 1, 2);
       }
       const newCoords = slideCounter * 100;
-      homeLatestSlider.style.transform = `translateX(-${newCoords}%)`;
+      homeLatestList.style.transform = `translateX(-${newCoords}%)`;
     });
 
     // we return now because we don't need to compile the next lines of code if we are at Root/Home Path
