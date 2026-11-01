@@ -37,10 +37,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     homeLatestSliderBtns.addEventListener("click", el => {
-      if (el.target.classList.contains("slider-btn-left")) {
-        slideCounter = Math.max(slideCounter - 1, 0);
-      } else if (el.target.classList.contains("slider-btn-right")) {
-        slideCounter = Math.min(slideCounter + 1, 2);
+      if (el.target.classList.contains("slider-btn-one")) {
+        slideCounter = 0;
+      } else if (el.target.classList.contains("slider-btn-two")) {
+        slideCounter = 1;
+      } else if (el.target.classList.contains("slider-btn-three")) {
+        slideCounter = 2;
       }
       const newCoords = slideCounter * 100;
       homeLatestList.style.transform = `translateX(-${newCoords}%)`;

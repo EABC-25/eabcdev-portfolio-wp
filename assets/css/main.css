@@ -10,6 +10,7 @@
   --color-black: #121212;
   --color-lightgray: #c5c5c5;
   --color-aqua: #00b5b5;
+  --color-alliance-darkblue: #1119458e;
   --color-white: #ffffff;
   --text-shadow-main:
     0 0 4px var(--color-lightgray), 0 0 12px var(--color-aqua),
@@ -31,7 +32,7 @@
   --font-size-small: 12px;
   --font-size-medium: 14px;
   --font-size-large: 16px;
-  --font-size-title: 40px;
+  --font-size-title: 35px;
 }
 
 html,
@@ -324,7 +325,6 @@ main {
 .slider-switch {
   display: flex;
   height: 100%;
-  width: auto;
 }
 
 /* Target the scrollbar container (track) */
@@ -352,7 +352,7 @@ main {
 /* ------------------ Eabcdev Home ------------------- */
 /* --------------------------------------------------- */
 .eabcdev-home {
-  height: 200%;
+  height: 100%;
   width: 100%;
   min-width: 250px;
   max-width: 1200px;
@@ -360,59 +360,79 @@ main {
 }
 
 .eabcdev-home-hero {
-  height: 35%;
+  height: 60%;
   width: 100%;
+  padding-top: var(--med-spacing);
+  display: flex;
+  flex-direction: column;
 }
 
-.eabcdev-home-image {
-  height: 70%;
+.eabcdev-home-logo {
+  padding: var(--ultra-max-spacing);
+  height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--max-spacing);
-  opacity: 0.6;
+  position: relative;
 }
 
-.eabcdev-home-image img {
-  padding-top: var(--max-spacing);
+.eabcdev-home-logo .badge {
   height: 100%;
-  width: 100%;
+  background-color: var(--color-shale-lg70);
+  border-radius: 9999px;
+}
+
+.eabcdev-home-logo .badge img {
+  height: 100%;
   object-fit: contain;
 }
 
-.eabcdev-home-title h1 {
-  align-items: center;
+.eabcdev-home-intro {
+  position: absolute;
+  width: max-content;
+  bottom: 0;
+  transform: translateY(-60%);
+  background-color: var(--color-alliance-darkblue);
+  border-radius: var(--max-border-radius);
+  text-shadow: var(--text-shadow-main);
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: var(--font-size-title);
-  padding-bottom: var(--ultra-max-spacing);
 }
 
-.eabcdev-home-excerpt p {
+.eabcdev-home-intro h1 {
+  font-size: var(--font-size-title);
+  padding: var(--med-spacing) var(--ultra-max-spacing);
+}
+
+.eabcdev-home-intro p {
   align-items: center;
   justify-content: center;
   font-size: var(--font-size-large);
-  padding-bottom: var(--ultra-max-spacing);
+  padding-bottom: var(--max-spacing);
 }
 
 .eabcdev-home-latest {
-  height: 15%;
+  display: flex;
+  justify-content: center;
+  height: 40%;
   width: 100%;
-  padding-left: var(--ultra-max-spacing);
-  padding-right: var(--ultra-max-spacing);
 }
 
 .eabcdev-home-latest-container {
   height: 100%;
   width: 100%;
+  max-width: 600px;
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
 .eabcdev-home-latest-slider-frame {
   height: 90%;
-  width: 80%;
+  width: 100%;
   position: relative;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -432,35 +452,42 @@ main {
   padding: 0px var(--med-spacing);
 }
 
+.latest-project-info {
+  flex: 1;
+  width: 100%;
+}
+
 .eabcdev-home-folder-top-container {
   height: 15%;
 }
 
 .eabcdev-home-folder-pane {
   display: flex;
+  flex-direction: column;
   flex: 1;
   height: 85%;
+  width: 100%;
 }
 
 .eabcdev-home-latest-slider-btns {
-  position: absolute;
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  top: 50%;
-  transform: translateY(-50%);
+  justify-content: center;
+  gap: var(--med-spacing);
+  padding: var(--med-spacing) 0;
 }
 
-.eabcdev-home-latest-slider-btns .slider-btn-left,
-.eabcdev-home-latest-slider-btns .slider-btn-right {
+.eabcdev-home-latest-slider-btns .slider-btn-one,
+.eabcdev-home-latest-slider-btns .slider-btn-two,
+.eabcdev-home-latest-slider-btns .slider-btn-three {
   all: unset;
   box-sizing: inherit;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5em;
-  height: 40px;
-  width: 40px;
+  font-size: 1em;
+  height: 25px;
+  width: 25px;
   font-weight: 900;
   cursor: pointer;
   padding: var(--med-spacing);
@@ -471,17 +498,22 @@ main {
     background-color 1s ease;
 }
 
-.eabcdev-home-latest-slider-btns .slider-btn-left:hover,
-.eabcdev-home-latest-slider-btns .slider-btn-right:hover {
+.eabcdev-home-latest-slider-btns .slider-btn-one:hover,
+.eabcdev-home-latest-slider-btns .slider-btn-two:hover,
+.eabcdev-home-latest-slider-btns .slider-btn-three:hover {
   transform: scale(1.2);
 }
 
-.eabcdev-home-latest-slider-btns .slider-btn-left:active,
-.eabcdev-home-latest-slider-btns .slider-btn-right:active {
+.eabcdev-home-latest-slider-btns .slider-btn-one:active,
+.eabcdev-home-latest-slider-btns .slider-btn-two:active,
+.eabcdev-home-latest-slider-btns .slider-btn-three:active {
   background-color: var(--color-aqua);
 }
 
 @media screen and (min-width: 1200px) {
+  .eabcdev-home-latest-container {
+    max-width: 100%;
+  }
   .eabcdev-home-latest-list {
     transform: translateX(0);
   }
@@ -696,6 +728,12 @@ main {
   height: max-content;
   padding-top: var(--ultra-max-spacing);
   background-color: var(--color-shale-lg70);
+}
+
+.latest-projects {
+  display: flex;
+  padding-top: var(--max-spacing);
+  width: 100%;
 }
 
 .project-taxonomies h2,
