@@ -357,173 +357,50 @@ main {
   min-width: 250px;
   max-width: 1200px;
   margin: 0 auto;
+  padding: var(--max-spacing) 0;
 }
 
-.eabcdev-home-hero {
+.eabcdev-home-jumbotron {
   height: 60%;
   width: 100%;
-  padding-top: var(--med-spacing);
-  display: flex;
-  flex-direction: column;
 }
 
-.eabcdev-home-logo {
-  padding: var(--ultra-max-spacing);
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.eabcdev-home-logo .badge {
-  height: 100%;
-  background-color: var(--color-shale-lg70);
+.eabcdev-home-jumbotron-logo {
+  height: 50%;
+  width: max-content;
+  padding: var(--max-spacing);
+  margin: 0 auto;
+  background-color: var(--color-gray);
   border-radius: 9999px;
 }
 
-.eabcdev-home-logo .badge img {
-  height: 100%;
-  object-fit: contain;
-}
-
-.eabcdev-home-intro {
-  position: absolute;
-  width: max-content;
-  bottom: 0;
-  transform: translateY(-60%);
-  background-color: var(--color-alliance-darkblue);
-  border-radius: var(--max-border-radius);
+.eabcdev-home-jumbotron-intro {
+  height: 50%;
+  width: 100%;
+  background-color: var(--color-gray);
   text-shadow: var(--text-shadow-main);
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.eabcdev-home-intro h1 {
+.eabcdev-home-jumbotron-logo img {
+  height: 100%;
+  object-fit: contain;
+}
+
+.eabcdev-home-jumbotron-intro h1 {
   font-size: var(--font-size-title);
-  padding: var(--med-spacing) var(--ultra-max-spacing);
 }
 
-.eabcdev-home-intro p {
-  align-items: center;
-  justify-content: center;
+.eabcdev-home-jumbotron-intro p {
   font-size: var(--font-size-large);
-  padding-bottom: var(--max-spacing);
 }
 
-.eabcdev-home-latest {
-  display: flex;
-  justify-content: center;
+.eabcdev-home-latest-projects {
   height: 40%;
   width: 100%;
-}
-
-.eabcdev-home-latest-container {
-  height: 100%;
-  width: 100%;
-  max-width: 600px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.eabcdev-home-latest-slider-frame {
-  height: 90%;
-  width: 100%;
-  position: relative;
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-
-.eabcdev-home-latest-list {
-  position: absolute;
-  transition: transform 0.5s ease;
-}
-
-.eabcdev-home-latest-list li {
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  height: 100%;
-  width: 100%;
-  padding: 0px var(--med-spacing);
-}
-
-.latest-project-info {
-  flex: 1;
-  width: 100%;
-}
-
-.eabcdev-home-folder-top-container {
-  height: 15%;
-}
-
-.eabcdev-home-folder-pane {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  height: 85%;
-  width: 100%;
-}
-
-.eabcdev-home-latest-slider-btns {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: var(--med-spacing);
-  padding: var(--med-spacing) 0;
-}
-
-.eabcdev-home-latest-slider-btns .slider-btn-one,
-.eabcdev-home-latest-slider-btns .slider-btn-two,
-.eabcdev-home-latest-slider-btns .slider-btn-three {
-  all: unset;
-  box-sizing: inherit;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1em;
-  height: 25px;
-  width: 25px;
-  font-weight: 900;
-  cursor: pointer;
-  padding: var(--med-spacing);
-  background-color: var(--color-shale-lg70);
-  border-radius: 9999px;
-  transition:
-    transform 0.5s ease,
-    background-color 1s ease;
-}
-
-.eabcdev-home-latest-slider-btns .slider-btn-one:hover,
-.eabcdev-home-latest-slider-btns .slider-btn-two:hover,
-.eabcdev-home-latest-slider-btns .slider-btn-three:hover {
-  transform: scale(1.2);
-}
-
-.eabcdev-home-latest-slider-btns .slider-btn-one:active,
-.eabcdev-home-latest-slider-btns .slider-btn-two:active,
-.eabcdev-home-latest-slider-btns .slider-btn-three:active {
-  background-color: var(--color-aqua);
-}
-
-@media screen and (min-width: 1200px) {
-  .eabcdev-home-latest-container {
-    max-width: 100%;
-  }
-  .eabcdev-home-latest-list {
-    transform: translateX(0);
-  }
-  .eabcdev-home-latest-list li {
-    flex-shrink: 1;
-  }
-  .eabcdev-home-latest-slider-btns .slider-btn-left,
-  .eabcdev-home-latest-slider-btns .slider-btn-right {
-    display: none;
-  }
+  background-color: var(--color-gray);
 }
 
 /* --------------------------------------------------- */

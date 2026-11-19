@@ -40,72 +40,16 @@
   <section class="window-content first-column">
     <section>
       <section class="eabcdev-home">
-        <section class="eabcdev-home-hero">
-          <div class="eabcdev-home-logo">
-            <div class="badge">
-              <img src="<?php echo esc_url($hero); ?>" alt="eabcdev image">
-            </div>
-            <div class="eabcdev-home-intro">
-              <h1>Hi, I'm EABCDEV!</h1>
-              <p>Gamer, Rider, Coder.</p>
-            </div>
+        <div class="eabcdev-home-jumbotron">
+          <div class="eabcdev-home-jumbotron-logo">
+            <img src="<?php echo esc_url($hero); ?>" alt="eabcdev-logo">
           </div>
-        </section> 
-        <section class="eabcdev-home-latest"> 
-          <div class="eabcdev-home-latest-container">
-            <div class="eabcdev-home-latest-slider-frame">
-              <div class="slider-container">
-                <ul class="slider-switch eabcdev-home-latest-list">
-                  <?php if (! empty($latest_projects)) : ?>
-                    <?php foreach ($latest_projects as $project) : ?>
-                      <li>
-                        <div class="eabcdev-home-folder-top-container">
-                          <div class="folder-top-layout">
-                            <div class="left">
-                              <div class="project-title">
-                                <h1>
-                                  <?php echo esc_html($project['title']); ?>
-                                </h1>
-                              </div>
-                            </div>
-                            <div class="right"></div>
-                          </div>
-                        </div>           
-                        <div class="folder-pane eabcdev-home-folder-pane">
-                          <div class="project-info latest-project-info" style="
-                            background-image: 
-                            linear-gradient(rgba(46,46,46,0.7), rgba(46,46,46,0.7)),
-                            url('<?php echo esc_url($project['featured_image_url']); ?>');
-                            background-size: cover;
-                            background-position: center;
-                            background-repeat: no-repeat;
-                          ">
-                            <p class="project-excerpt">
-                              <?php echo esc_html($project['excerpt']); ?>
-                            </p>
-                            <a class="project-link" href="<?php echo esc_url($project['project_link']); ?>">...View More</a>
-                          </div>
-                          <div class="project-taxonomies latest-projects">
-                            <?php get_template_part('template-parts/window-tab', 'project-taxonomies-unnested', [
-                            'class' => 'language',
-                            'values' => $project['languages'],
-                            ]); ?>
-                          </div>
-                        </div>
-                      </li>
-                    <?php endforeach; ?>
-                  <?php else: ?>
-                  <?php endif; ?>
-                </ul>
-              </div>
-            </div>          
-            <div class="eabcdev-home-latest-slider-btns">
-              <button class="slider-btn-one" type="button">1</button>
-              <button class="slider-btn-two" type="button">2</button>
-              <button class="slider-btn-three" type="button">3</button>
-            </div>
+          <div class="eabcdev-home-jumbotron-intro">
+            <h1>Hi, I'm EABCDEV!</h1>
+            <p>Gamer, Rider, Coder.</p>
           </div>
-        </section>
+        </div>
+        <article class="eabcdev-home-latest-projects"></article>
       </section>
     </section>
   </section>
