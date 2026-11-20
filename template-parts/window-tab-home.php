@@ -44,12 +44,14 @@
           <div class="eabcdev-home-jumbotron-logo">
             <img src="<?php echo esc_url($hero); ?>" alt="eabcdev-logo">
           </div>
-          <div class="eabcdev-home-jumbotron-intro">
-            <h1>Hi, I'm EABCDEV!</h1>
-            <p>Gamer, Rider, Coder.</p>
-          </div>
         </div>
-        <article class="eabcdev-home-latest-projects"></article>
+        <div class="eabcdev-home-base">
+          <h1>EABCDEV</h1>
+          <p>Gamer, Rider, Coder.</p>
+          <article class="eabcdev-home-latest-projects">
+            <h1>My latest projects:</h1>
+          </article>
+        </div>
       </section>
     </section>
   </section>

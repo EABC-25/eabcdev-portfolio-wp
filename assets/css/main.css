@@ -9,13 +9,22 @@
   --color-main: #1c2226;
   --color-black: #121212;
   --color-lightgray: #c5c5c5;
-  --color-aqua: #00b5b5;
-  --color-alliance-darkblue: #1119458e;
+  --color-blue-1: #00ffff;
+  --color-blue-2: #0088ff;
+  --color-blue-3: #00417a;
   --color-white: #ffffff;
   --text-shadow-main:
-    0 0 4px var(--color-lightgray), 0 0 12px var(--color-aqua),
-    0 0 30px var(--color-aqua), 0 0 70px var(--color-aqua),
-    0 0 120px var(--color-aqua);
+    0 0 4px var(--color-lightgray), 0 0 12px var(--color-blue-1),
+    0 0 30px var(--color-blue-1), 0 0 70px var(--color-blue-1),
+    0 0 120px var(--color-blue-1);
+  --logo-glow-effect: drop-shadow(0 0 5px var(--color-blue-1))
+    drop-shadow(0 0 5px var(--color-blue-1))
+    drop-shadow(0 0 10px var(--color-blue-2));
+  --background-fade-blue-3: linear-gradient(
+    to bottom,
+    transparent 16%,
+    var(--color-blue-3) 70%
+  );
   --color-shale-lg70: rgba(46, 46, 46, 0.7);
   --color-shale-lg80: rgba(46, 46, 46, 0.8);
   --border-style-gray: var(--color-gray) 1px solid;
@@ -32,7 +41,7 @@
   --font-size-small: 12px;
   --font-size-medium: 14px;
   --font-size-large: 16px;
-  --font-size-title: 35px;
+  --font-size-title: 50px;
 }
 
 html,
@@ -354,34 +363,32 @@ main {
 .eabcdev-home {
   height: 100%;
   width: 100%;
-  min-width: 250px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: var(--max-spacing) 0;
+  padding-top: var(--ultra-max-spacing);
+  background: var(--background-fade-blue-3);
 }
 
 .eabcdev-home-jumbotron {
-  height: 60%;
+  height: 30%;
   width: 100%;
+  padding-bottom: var(--max-spacing);
+}
+
+.eabcdev-home-base {
+  height: 70%;
+  width: 100%;
+  min-width: 250px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .eabcdev-home-jumbotron-logo {
-  height: 50%;
+  height: 100%;
   width: max-content;
   padding: var(--max-spacing);
   margin: 0 auto;
-  background-color: var(--color-gray);
+  background-color: var(--color-blue-3);
+  filter: var(--logo-glow-effect);
   border-radius: 9999px;
-}
-
-.eabcdev-home-jumbotron-intro {
-  height: 50%;
-  width: 100%;
-  background-color: var(--color-gray);
-  text-shadow: var(--text-shadow-main);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .eabcdev-home-jumbotron-logo img {
@@ -389,18 +396,23 @@ main {
   object-fit: contain;
 }
 
-.eabcdev-home-jumbotron-intro h1 {
+.eabcdev-home-base > h1,
+.eabcdev-home-base > p {
+  text-align: center;
+  white-space: nowrap;
+  display: block;
+  /* text-shadow: var(--text-shadow-main); */
+}
+
+.eabcdev-home-base > h1 {
+  padding-top: calc(var(--ultra-max-spacing) + var(--ultra-max-spacing));
+  letter-spacing: 0.3em;
+  margin-right: -0.3em;
   font-size: var(--font-size-title);
 }
 
-.eabcdev-home-jumbotron-intro p {
+.eabcdev-home-base > p {
   font-size: var(--font-size-large);
-}
-
-.eabcdev-home-latest-projects {
-  height: 40%;
-  width: 100%;
-  background-color: var(--color-gray);
 }
 
 /* --------------------------------------------------- */
